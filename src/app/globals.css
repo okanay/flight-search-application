@@ -20,7 +20,6 @@
 }
 
 :root {
-   --categories-max-h-calc: calc(100vh - 170px);
    --theme-50: 239, 239, 254;
    --theme-100: 225, 227, 254;
    --theme-200: 201, 201, 252;
@@ -34,6 +33,13 @@
    --theme-950: 40, 29, 73;
 }
 
+.skeleton-nav-item {
+   @apply animate-pulse cursor-pointer rounded-lg bg-slate-300 transition-colors duration-300 hover:bg-slate-500 flex-shrink-0
+}
+
+.skeleton-nav-icon {
+   @apply h-[20px] w-[32px] cursor-pointer text-slate-800 transition-colors duration-300 hover:text-slate-600
+}
 
 .h-screen-custom {
    height: 100vh;

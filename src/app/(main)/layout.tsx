@@ -1,11 +1,11 @@
 import { ReactNode } from 'react'
-import { Header } from '@/components/Header-Components/Header'
-import { Footer } from '@/components/Footer-Components/Footer'
+import { Header } from '@/components/(Main)/Header/Header'
+import { Footer } from '@/components/(Main)/Footer/Footer'
 
 type Props = {
    children: ReactNode
 }
-export default function MainLayout({ children }: Props) {
+export default function RootLayout({ children }: Props) {
    return (
       <>
          <Header />
