@@ -1,0 +1,42 @@
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;800&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Radio+Canada:wght@300;400;500;600&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Inconsolata:wght@400;600&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Figtree:wght@300;400;500;600;700;800;900&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=IBM+Plex+Serif:wght@100;200;300;400;500;600;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Spline+Sans:wght@300;400;500;600;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Gloock&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Open+Sans:wght@300;400;500;600;700;800&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Jost:wght@100;200;300;400;500;600&display=swap');
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+*:focus {
+   border-color: inherit;
+   -webkit-box-shadow: none;
+   box-shadow: none;
+}
+
+:root {
+   --categories-max-h-calc: calc(100vh - 170px);
+   --theme-50: 239, 239, 254;
+   --theme-100: 225, 227, 254;
+   --theme-200: 201, 201, 252;
+   --theme-300: 171, 169, 248;
+   --theme-400: 144, 134, 243;
+   --theme-500: 126, 105, 235;
+   --theme-600: 112, 77, 222;
+   --theme-700: 97, 62, 196;
+   --theme-800: 76, 51, 152;
+   --theme-900: 66, 50, 125;
+   --theme-950: 40, 29, 73;
+}
+
+
+.h-screen-custom {
+   height: 100vh;
+   height: 100dvh;
+}
+
