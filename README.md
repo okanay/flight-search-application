@@ -11,53 +11,9 @@ npm run dev
 yarn dev
 # or
 pnpm dev
+
+
+## ``Bold`` Some descriptions?
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
-
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
-
-This project uses [`next/font`](https://nextjs.org/docs/basic-features/font-optimization) to automatically optimize and load
-Inter, a custom Google Font.
-
-## Learn More
-
-To learn more about Next.js, take a look at the following resources:
-
--  [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
--  [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
-
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js/) - your feedback and contributions are
-welcome!
-
-## Deploy on Vercel
-
-The easiest way to deploy your Next.js app is to use the
-[Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme)
-from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/deployment) for more details.
-
-##  Requirement for ``.env.local``
-```
-NEXTAUTH_SECRET=10230AOSKD01ALSKF
-NEXTAUTH_URL=http://localhost:3000
-SECRET_KEY=aB3DSA2EQFLccFBnRADSQE3FPmnbT_yIj02alfL1lvS
-JWT_KEY=AOKDAOFNSJANSJA93401jaksdmaks
-```
-
-
-## ``i18`` How to use?
-```
-'use client'
-
-import { useTranslations } from 'next-intl'
-
-
-const YourComponent = () => {
-
-    const t = useTranslations('Index')
-
-    return <h1>{t('title')}</h1>
-}
 ```
