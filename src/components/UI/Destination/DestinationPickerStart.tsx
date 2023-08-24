@@ -1,6 +1,6 @@
 'use client'
 
-import { AirportsMockData, CountriesMockData, TAirport, TCountry } from '../../../../libs/Constants/MockData'
+import { AirportsMockData, CountriesMockData, TAirport, TCountry } from '../../../../libs/constants/MockData'
 import { DestinationPicker } from '@/components/UI/Destination/DestinationPicker'
 import { useRef, useState } from 'react'
 import { useDispatch, useSelector } from 'react-redux'

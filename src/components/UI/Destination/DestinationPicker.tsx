@@ -1,4 +1,4 @@
-import { TAirport, TCountry } from '../../../../libs/Constants/MockData'
+import { TAirport, TCountry } from '../../../../libs/constants/MockData'
 import { TDestinationBtnName } from '../../../../libs/types/types'
 import { Dispatch, RefObject, SetStateAction, useEffect, useRef, useState } from 'react'
 import useMenuOutsideCloseEffect from '@/custom-hooks/useMenuOutsideCloseEffect'
@@ -84,13 +84,17 @@ export const DestinationPicker = ({
                      className="relative z-20 w-full border-2 border-transparent bg-slate-50 px-2 py-4 font-openSans font-semibold text-slate-800 placeholder-slate-500 focus:border-primary-600 focus:outline-0"
                      placeholder={'Havalimani Ara...'}
                   />
+                  {/*Airports and Country*/}
                   <div className={'flex h-full w-full flex-row shadow shadow-slate-200'}>
                      {/*Airports*/}
                      <div className={'flex h-full w-full flex-col gap-2 bg-white pb-4'}>
-                        <h2 className={'w-full bg-primary-600 px-2 py-4 text-start text-[16px] font-semibold text-white'}>
+                        <h2
+                           className={
+                              'w-full bg-gradient-to-l from-primary-300 to-primary-400 px-2 py-4 text-start text-[16px] font-semibold text-white'
+                           }>
                            Havalimanlari
                         </h2>
-                        <div className={'flex h-full w-full flex-col gap-2 overflow-y-auto'}>
+                        <div className={'flex h-full w-full flex-col gap-2 overflow-y-auto pr-4'}>
                            {airportsList.map(a => (
                               <button
                                  type={'button'}
@@ -98,21 +102,26 @@ export const DestinationPicker = ({
                                  onClick={() => handleAirportDestinationChange(a)}
                                  className={`relative flex w-full flex-col px-2 text-start transition-all duration-300 ${
                                     selectedDestination?.name === a.name
-                                       ? 'bg-gradient-to-tr from-primary-500 to-primary-600 text-slate-50 hover:opacity-80'
+                                       ? 'bg-gradient-to-r from-primary-400 to-primary-300 text-slate-50 hover:opacity-80'
                                        : 'text-slate-600 hover:bg-slate-200 hover:opacity-90'
                                  }`}>
                                  <span className={'text-[14px] font-bold'}>{a.name}</span>
-                                 <span className={'text-[10px]'}>{a.countryName}</span>
+                                 <span className={'text-[10px]'}>
+                                    {a.countryName}/{a.continent}
+                                 </span>
                               </button>
                            ))}
                         </div>
                      </div>
                      {/*Country*/}
                      <div className={'flex h-full w-full flex-col gap-2 bg-white pb-4'}>
-                        <h2 className={'w-full bg-primary-600 px-2 py-4 text-start text-[16px] font-semibold text-white'}>
+                        <h2
+                           className={
+                              'w-full bg-gradient-to-l from-primary-400 to-primary-300 px-2 py-4 text-start text-[16px] font-semibold text-white'
+                           }>
                            Ülkeler
                         </h2>
-                        <div className={'flex h-full w-full flex-col gap-2 overflow-y-auto'}>
+                        <div className={'flex h-full w-full flex-col gap-2 overflow-y-auto pr-4'}>
                            {countryList.map(c => (
                               <button
                                  key={nanoid()}
@@ -122,7 +131,7 @@ export const DestinationPicker = ({
                                  }}
                                  className={`relative flex w-full flex-col px-2 text-start transition-all duration-300 ${
                                     selectedCountry?.name === c.name
-                                       ? 'bg-gradient-to-tr from-primary-500 to-primary-600 text-slate-50 hover:opacity-80'
+                                       ? 'bg-gradient-to-l from-primary-400 to-primary-300 text-slate-50 hover:opacity-80'
                                        : 'text-slate-600 hover:bg-slate-200 hover:opacity-90'
                                  }`}>
                                  <span className={'text-[14px] font-bold'}>{c.name}</span>

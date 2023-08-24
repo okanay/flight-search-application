@@ -1,4 +1,4 @@
-import { TAirport, TCountry } from '../Constants/MockData'
+import { TAirport, TCountry } from '../constants/MockData'
 
 export function DestinationFilter(
    withoutAirport: TAirport[],

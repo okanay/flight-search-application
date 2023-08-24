@@ -6,6 +6,7 @@ import { Next2Label, NextLabel, Prev2Label, PrevLabel } from '@/components/UI/Da
 import { PickerMenuContainer } from '@/components/UI/PickerMenuContainer'
 import { useRef, useState } from 'react'
 import useMenuOutsideCloseEffect from '@/custom-hooks/useMenuOutsideCloseEffect'
+import { FormattedDate } from '../../../../libs/helpers/FormattedDate'
 
 type TProps = {
    buttonName: TDateBtnName
@@ -28,14 +29,7 @@ export const DatePicker = ({ buttonName, selectedDate, handleOnChangeCallBack, m
    const menuRef = useRef<HTMLDivElement>(null)
    useMenuOutsideCloseEffect({ buttonRef, menuRef, setIsOpen })
 
-   let formattedDate = ''
-   let dayName = ''
-
-   if (selectedDate !== undefined) {
-      const parsedDate = new Date(selectedDate)
-      formattedDate = format(parsedDate, 'dd MMMM', { locale: tr })
-      dayName = format(parsedDate, 'EEEE', { locale: tr })
-   }
+   const { formattedDate, dayName } = FormattedDate(selectedDate)
 
    return (
       <div className={`flex flex-col items-end`}>

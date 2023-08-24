@@ -35,7 +35,7 @@ export const IsOneWayToggleButton = () => {
                      <motion.div
                         layoutId={'active-pill'}
                         style={{ borderRadius: 8 }}
-                        className={'absolute inset-0 bg-gradient-to-tr from-primary-500 to-primary-400'}
+                        className={'absolute inset-0 bg-gradient-to-tr from-primary-300 to-primary-400'}
                      />
                   )}
                   <p

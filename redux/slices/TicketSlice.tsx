@@ -1,5 +1,5 @@
 import { createSlice } from '@reduxjs/toolkit'
-import { TAirport } from '../../libs/Constants/MockData'
+import { TAirport } from '../../libs/constants/MockData'
 import { formatISO } from 'date-fns'
 
 export type TTicket = {
