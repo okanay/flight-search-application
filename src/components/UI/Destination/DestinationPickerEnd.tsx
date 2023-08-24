@@ -36,6 +36,7 @@ export const DestinationPickerEnd = () => {
    }
 
    const handleAirportDestinationChange = (value: TAirport) => {
+      if (destinationEnd?.name === value.name) return dispatch(setAirportEnd(undefined))
       dispatch(setAirportEnd(value))
    }
 
@@ -43,6 +44,7 @@ export const DestinationPickerEnd = () => {
       <DestinationPicker
          buttonName={'Nereye'}
          selectedDestination={destinationEnd}
+         selectedCountry={selectedCountry}
          setSelectedCountry={setSelectedCountry}
          airportsList={withSearchParamsItem}
          countryList={CountriesMockData}

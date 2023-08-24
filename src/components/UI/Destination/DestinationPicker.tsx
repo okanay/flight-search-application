@@ -14,6 +14,7 @@ type TProps = {
    searchInputRef: RefObject<HTMLInputElement>
    searchInputOnChange: void
    handleAirportDestinationChange: (value: TAirport) => void
+   selectedCountry: TCountry | undefined
 }
 
 export const DestinationPicker = ({
@@ -25,6 +26,7 @@ export const DestinationPicker = ({
    searchInputRef,
    searchInputOnChange,
    handleAirportDestinationChange,
+   selectedCountry,
 }: TProps) => {
    const [isOpen, setIsOpen] = useState(false)
 
@@ -35,6 +37,11 @@ export const DestinationPicker = ({
 
    useMenuOutsideCloseEffect({ buttonRef, menuRef, setIsOpen })
 
+   const handleSetCountry = (c: TCountry) => {
+      if (selectedCountry?.name === c.name) return setSelectedCountry(undefined)
+
+      setSelectedCountry(c)
+   }
    return (
       <div className={`relative flex w-fit flex-col items-start`}>
          <button
@@ -83,7 +90,11 @@ export const DestinationPicker = ({
                                  type={'button'}
                                  key={nanoid()}
                                  onClick={() => handleAirportDestinationChange(a)}
-                                 className="relative flex w-full flex-col px-2 text-start text-slate-600 transition-all duration-300 hover:bg-slate-200 hover:text-slate-900">
+                                 className={`relative flex w-full flex-col px-2 text-start text-slate-600 transition-all duration-300 hover:bg-slate-200 ${
+                                    selectedDestination?.name === a.name
+                                       ? 'bg-gradient-to-tr from-primary-500 to-primary-600 text-slate-50 hover:opacity-80'
+                                       : 'hover:opacity-90'
+                                 }`}>
                                  <span className={'text-[14px] font-bold'}>{a.name}</span>
                                  <span className={'text-[10px]'}>{a.countryName}</span>
                               </button>
@@ -100,9 +111,13 @@ export const DestinationPicker = ({
                                  key={nanoid()}
                                  type={'button'}
                                  onClick={() => {
-                                    setSelectedCountry(c)
+                                    handleSetCountry(c)
                                  }}
-                                 className="relative flex w-full flex-col px-2 text-start text-slate-600 transition-all duration-300 hover:bg-slate-200 hover:text-slate-900">
+                                 className={`relative flex w-full flex-col px-2 text-start text-slate-600 transition-all duration-300 hover:bg-slate-200 ${
+                                    selectedCountry?.name === c.name
+                                       ? 'bg-gradient-to-tr from-primary-500 to-primary-600 text-slate-50 hover:opacity-80'
+                                       : 'hover:opacity-90'
+                                 }`}>
                                  <span className={'text-[14px] font-bold'}>{c.name}</span>
                                  <span className={'text-[10px]'}>{c.continent}</span>
                               </button>

@@ -4,7 +4,7 @@ import { AirportsMockData, CountriesMockData, TAirport, TCountry } from '../../.
 import { DestinationPicker } from '@/components/UI/Destination/DestinationPicker'
 import { useRef, useState } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
-import { getAirportEnd, getAirportStart, setAirportStart } from '../../../../redux/slices/TicketSlice'
+import { getAirportEnd, getAirportStart, setAirportEnd, setAirportStart } from '../../../../redux/slices/TicketSlice'
 import { DestinationFilter } from '../../../../libs/helpers/DestinationFilter'
 
 export const DestinationPickerStart = () => {
@@ -35,6 +35,7 @@ export const DestinationPickerStart = () => {
    }
 
    const handleAirportDestinationChange = (value: TAirport) => {
+      if (destinationStart?.name === value.name) return dispatch(setAirportStart(undefined))
       dispatch(setAirportStart(value))
    }
 
@@ -43,6 +44,7 @@ export const DestinationPickerStart = () => {
          buttonName={'Nereden'}
          selectedDestination={destinationStart}
          setSelectedCountry={setSelectedCountry}
+         selectedCountry={selectedCountry}
          airportsList={withSearchParamsItem}
          countryList={CountriesMockData}
          searchInputRef={searchInputRef}
