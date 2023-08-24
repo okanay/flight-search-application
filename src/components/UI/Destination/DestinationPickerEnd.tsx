@@ -2,7 +2,7 @@
 
 import { AirportsMockData, CountriesMockData, TAirport, TCountry } from '../../../../libs/Constants/MockData'
 import { DestinationPicker } from '@/components/UI/Destination/DestinationPicker'
-import { useRef, useState } from 'react'
+import { useEffect, useRef, useState } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
 import { getAirportEnd, getAirportStart, setAirportEnd, setAirportStart } from '../../../../redux/slices/TicketSlice'
 import { DestinationFilter } from '../../../../libs/helpers/DestinationFilter'
@@ -46,6 +46,7 @@ export const DestinationPickerEnd = () => {
          selectedDestination={destinationEnd}
          selectedCountry={selectedCountry}
          setSelectedCountry={setSelectedCountry}
+         setSearchInput={setSearchInput}
          airportsList={withSearchParamsItem}
          countryList={CountriesMockData}
          searchInputRef={searchInputRef}

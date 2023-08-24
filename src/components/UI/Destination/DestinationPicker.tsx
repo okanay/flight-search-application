@@ -1,6 +1,6 @@
 import { TAirport, TCountry } from '../../../../libs/Constants/MockData'
 import { TDestinationBtnName } from '../../../../libs/types/types'
-import { Dispatch, RefObject, SetStateAction, useRef, useState } from 'react'
+import { Dispatch, RefObject, SetStateAction, useEffect, useRef, useState } from 'react'
 import useMenuOutsideCloseEffect from '@/custom-hooks/useMenuOutsideCloseEffect'
 import { PickerMenuContainer } from '@/components/UI/PickerMenuContainer'
 import { nanoid } from '@reduxjs/toolkit'
@@ -8,25 +8,27 @@ import { nanoid } from '@reduxjs/toolkit'
 type TProps = {
    buttonName: TDestinationBtnName
    selectedDestination: TAirport | undefined
-   setSelectedCountry: Dispatch<SetStateAction<TCountry | undefined>>
+   selectedCountry: TCountry | undefined
    airportsList: TAirport[]
    countryList: TCountry[]
-   searchInputRef: RefObject<HTMLInputElement>
-   searchInputOnChange: void
    handleAirportDestinationChange: (value: TAirport) => void
-   selectedCountry: TCountry | undefined
+   searchInputRef: RefObject<HTMLInputElement>
+   setSelectedCountry: Dispatch<SetStateAction<TCountry | undefined>>
+   setSearchInput: Dispatch<SetStateAction<string | null | undefined>>
+   searchInputOnChange: void
 }
 
 export const DestinationPicker = ({
    buttonName,
    selectedDestination,
-   setSelectedCountry,
+   selectedCountry,
    airportsList,
    countryList,
-   searchInputRef,
-   searchInputOnChange,
    handleAirportDestinationChange,
-   selectedCountry,
+   searchInputRef,
+   setSelectedCountry,
+   setSearchInput,
+   searchInputOnChange,
 }: TProps) => {
    const [isOpen, setIsOpen] = useState(false)
 
@@ -36,6 +38,12 @@ export const DestinationPicker = ({
    const handleMenuToggle = () => setIsOpen(prev => !prev)
 
    useMenuOutsideCloseEffect({ buttonRef, menuRef, setIsOpen })
+
+   useEffect(() => {
+      if (!isOpen) {
+         setSearchInput('')
+      }
+   }, [isOpen, setSearchInput])
 
    const handleSetCountry = (c: TCountry) => {
       if (selectedCountry?.name === c.name) return setSelectedCountry(undefined)
@@ -68,10 +76,7 @@ export const DestinationPicker = ({
          </button>
          {isOpen && (
             <PickerMenuContainer menuRef={menuRef} handleMenuToggle={handleMenuToggle as any} buttonName={buttonName}>
-               <div
-                  className={
-                     'react-calendar flex h-full flex-col items-start justify-start shadow shadow-slate-200 smTablet:h-[300px]'
-                  }>
+               <div className="react-calendar flex h-full flex-col items-start justify-start shadow shadow-slate-200 smTablet:h-[300px]">
                   <input
                      ref={searchInputRef}
                      onChange={searchInputOnChange as any}
@@ -80,6 +85,7 @@ export const DestinationPicker = ({
                      placeholder={'Havalimani Ara...'}
                   />
                   <div className={'flex h-full w-full flex-row shadow shadow-slate-200'}>
+                     {/*Airports*/}
                      <div className={'flex h-full w-full flex-col gap-2 bg-white pb-4'}>
                         <h2 className={'w-full bg-primary-600 px-2 py-4 text-start text-[16px] font-semibold text-white'}>
                            Havalimanlari
@@ -90,10 +96,10 @@ export const DestinationPicker = ({
                                  type={'button'}
                                  key={nanoid()}
                                  onClick={() => handleAirportDestinationChange(a)}
-                                 className={`relative flex w-full flex-col px-2 text-start text-slate-600 transition-all duration-300 hover:bg-slate-200 ${
+                                 className={`relative flex w-full flex-col px-2 text-start transition-all duration-300 ${
                                     selectedDestination?.name === a.name
                                        ? 'bg-gradient-to-tr from-primary-500 to-primary-600 text-slate-50 hover:opacity-80'
-                                       : 'hover:opacity-90'
+                                       : 'text-slate-600 hover:bg-slate-200 hover:opacity-90'
                                  }`}>
                                  <span className={'text-[14px] font-bold'}>{a.name}</span>
                                  <span className={'text-[10px]'}>{a.countryName}</span>
@@ -101,6 +107,7 @@ export const DestinationPicker = ({
                            ))}
                         </div>
                      </div>
+                     {/*Country*/}
                      <div className={'flex h-full w-full flex-col gap-2 bg-white pb-4'}>
                         <h2 className={'w-full bg-primary-600 px-2 py-4 text-start text-[16px] font-semibold text-white'}>
                            Ülkeler
@@ -113,10 +120,10 @@ export const DestinationPicker = ({
                                  onClick={() => {
                                     handleSetCountry(c)
                                  }}
-                                 className={`relative flex w-full flex-col px-2 text-start text-slate-600 transition-all duration-300 hover:bg-slate-200 ${
+                                 className={`relative flex w-full flex-col px-2 text-start transition-all duration-300 ${
                                     selectedCountry?.name === c.name
                                        ? 'bg-gradient-to-tr from-primary-500 to-primary-600 text-slate-50 hover:opacity-80'
-                                       : 'hover:opacity-90'
+                                       : 'text-slate-600 hover:bg-slate-200 hover:opacity-90'
                                  }`}>
                                  <span className={'text-[14px] font-bold'}>{c.name}</span>
                                  <span className={'text-[10px]'}>{c.continent}</span>

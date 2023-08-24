@@ -45,6 +45,7 @@ export const DestinationPickerStart = () => {
          selectedDestination={destinationStart}
          setSelectedCountry={setSelectedCountry}
          selectedCountry={selectedCountry}
+         setSearchInput={setSearchInput}
          airportsList={withSearchParamsItem}
          countryList={CountriesMockData}
          searchInputRef={searchInputRef}
