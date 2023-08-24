@@ -10,7 +10,7 @@ export default function RootLayout({ children }: Props) {
       <>
          <Header />
          {children}
-         <Footer />
+         {/*<Footer />*/}
       </>
    )
 }

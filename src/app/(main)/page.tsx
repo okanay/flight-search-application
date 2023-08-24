@@ -1,7 +1,9 @@
+import { TicketSearchForm } from '@/components/(Main)/Index/TicketSearchForm'
+
 function RootPage() {
    return (
-      <main className={'mx-auto max-w-7xl px-4'}>
-         <p className={'py-8'}>Main page</p>
+      <main className={'mx-auto mt-20 max-w-7xl px-4'}>
+         <TicketSearchForm />
       </main>
    )
 }

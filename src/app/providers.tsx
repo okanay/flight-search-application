@@ -1,11 +1,11 @@
 'use client'
 
+import React from 'react'
 import { ReactNode } from 'react'
 
-import React from 'react'
-
+import { PersistGate as ReduxPersistProvider } from 'redux-persist/integration/react'
 import { Provider as ReduxProvider } from 'react-redux'
-import store from '../../redux/store'
+import { persistor, store } from '../../redux/store'
 
 type TProps = {
    children: ReactNode
@@ -14,7 +14,9 @@ type TProps = {
 export const Providers = ({ children }: TProps) => {
    return (
       <>
-         <ReduxProvider store={store}>{children}</ReduxProvider>
+         <ReduxProvider store={store}>
+            <ReduxPersistProvider persistor={persistor}>{children}</ReduxPersistProvider>
+         </ReduxProvider>
       </>
    )
 }

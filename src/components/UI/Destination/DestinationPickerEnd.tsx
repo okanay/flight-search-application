@@ -1,0 +1,54 @@
+'use client'
+
+import { AirportsMockData, CountriesMockData, TAirport, TCountry } from '../../../../libs/Constants/MockData'
+import { DestinationPicker } from '@/components/UI/Destination/DestinationPicker'
+import { useRef, useState } from 'react'
+import { useDispatch, useSelector } from 'react-redux'
+import { getAirportEnd, getAirportStart, setAirportEnd, setAirportStart } from '../../../../redux/slices/TicketSlice'
+import { DestinationFilter } from '../../../../libs/helpers/DestinationFilter'
+
+export const DestinationPickerEnd = () => {
+   const [selectedCountry, setSelectedCountry] = useState<TCountry | undefined>()
+   const searchInputRef = useRef<HTMLInputElement>(null)
+
+   const [searchInput, setSearchInput] = useState<string | null>()
+
+   const dispatch = useDispatch()
+
+   const destinationEnd = useSelector(getAirportEnd)
+   const destinationStart = useSelector(getAirportStart)
+
+   const withoutStartDestination: TAirport[] = AirportsMockData.filter(p => {
+      if (destinationStart !== undefined) {
+         if (p.city !== destinationStart.city) {
+            return p
+         }
+      } else {
+         return p
+      }
+   })
+
+   const withSearchParamsItem: TAirport[] = DestinationFilter(withoutStartDestination, selectedCountry, searchInput)
+
+   const handleSearchInputChange = () => {
+      setSelectedCountry(undefined)
+      setSearchInput(searchInputRef?.current?.value)
+   }
+
+   const handleAirportDestinationChange = (value: TAirport) => {
+      dispatch(setAirportEnd(value))
+   }
+
+   return (
+      <DestinationPicker
+         buttonName={'Nereye'}
+         selectedDestination={destinationEnd}
+         setSelectedCountry={setSelectedCountry}
+         airportsList={withSearchParamsItem}
+         countryList={CountriesMockData}
+         searchInputRef={searchInputRef}
+         searchInputOnChange={handleSearchInputChange as any}
+         handleAirportDestinationChange={handleAirportDestinationChange as any}
+      />
+   )
+}
