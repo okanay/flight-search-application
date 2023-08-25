@@ -276,10 +276,10 @@ const TicketMockData: TFlightTicket[] = [
    },
    {
       ticketId: 13,
-      destinationStart: AirportsMockData[7], // Frankfurt
-      destinationEnd: AirportsMockData[10], // Nice
-      isoFlightDate: '2023-08-29T15:15:00+03:00', // 29 Ağustos 2023, saat 15:15
-      ticketPrice: 1764,
+      destinationStart: AirportsMockData[10], // Frankfurt
+      destinationEnd: AirportsMockData[7], // Nice
+      isoFlightDate: '2023-08-30T14:45:00+03:00', // 29 Ağustos 2023, saat 15:15
+      ticketPrice: 2024,
    },
 ]
 

@@ -15,7 +15,7 @@ export const TicketListLoading = ({ maxSkeletonCount }: { maxSkeletonCount: numb
             </div>
             <div className={'flex h-full w-full max-w-[800px] flex-col items-start justify-start gap-4 px-4 py-4'}>
                {range(0, maxSkeletonCount - 1).map(i => (
-                  <CardLoading key={nanoid()} />
+                  <TicketCardLoading key={nanoid()} />
                ))}
             </div>
          </div>
@@ -23,7 +23,7 @@ export const TicketListLoading = ({ maxSkeletonCount }: { maxSkeletonCount: numb
    )
 }
 
-export const CardLoading = () => {
+export const TicketCardLoading = () => {
    return (
       <button
          type={'button'}

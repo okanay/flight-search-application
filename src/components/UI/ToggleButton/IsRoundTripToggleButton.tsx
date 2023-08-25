@@ -17,7 +17,7 @@ const selectableTab = [
    },
 ]
 
-export const IsOneWayToggleButton = () => {
+export const IsRoundTripToggleButton = () => {
    const dispatch = useDispatch()
    const isRoundTrip = useSelector(getIsRoundTrip)
 
@@ -38,7 +38,7 @@ export const IsOneWayToggleButton = () => {
                      />
                   )}
                   <p
-                     className={`relative z-20 transition-colors duration-700 ${
+                     className={`relative z-20 font-semibold tracking-wide transition-colors duration-700 ${
                         isRoundTrip === item.active ? 'text-white' : 'text-slate-600'
                      }`}>
                      {item.name}
