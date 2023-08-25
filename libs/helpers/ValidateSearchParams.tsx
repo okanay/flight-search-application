@@ -13,7 +13,7 @@ export const validateSearchParams = (searchParams: TTicketSearchParams): number 
       return 602
    }
 
-   if (!searchParams.isOneWay! && !searchParams.isoDateEnd!) {
+   if (!searchParams.isRoundTrip! && !searchParams.isoDateEnd!) {
       return 603
    }
 

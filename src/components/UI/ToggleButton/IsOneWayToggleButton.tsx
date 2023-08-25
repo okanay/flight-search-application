@@ -1,9 +1,8 @@
 'use client'
 
 import { motion } from 'framer-motion'
-import { useState } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
-import { getIsOneWay, toggleIsOneWay } from '../../../../redux/slices/TicketSlice'
+import { getIsRoundTrip, toggleIsOneWay } from '../../../../redux/slices/TicketSlice'
 
 const selectableTab = [
    {
@@ -20,7 +19,7 @@ const selectableTab = [
 
 export const IsOneWayToggleButton = () => {
    const dispatch = useDispatch()
-   const isOneWay = useSelector(getIsOneWay)
+   const isRoundTrip = useSelector(getIsRoundTrip)
 
    return (
       <button type={'button'} onClick={() => dispatch(toggleIsOneWay())} className={'group flex flex-col'}>
@@ -29,9 +28,9 @@ export const IsOneWayToggleButton = () => {
                <div
                   key={item.id}
                   className={`relative flex-shrink-0 rounded-full px-4 py-2 text-[14px] transition-opacity duration-300 ${
-                     isOneWay === item.active ? 'group-hover:opacity-80' : ''
+                     isRoundTrip === item.active ? 'group-hover:opacity-80' : ''
                   }`}>
-                  {isOneWay === item.active && (
+                  {isRoundTrip === item.active && (
                      <motion.div
                         layoutId={'active-pill'}
                         style={{ borderRadius: 8 }}
@@ -40,7 +39,7 @@ export const IsOneWayToggleButton = () => {
                   )}
                   <p
                      className={`relative z-20 transition-colors duration-700 ${
-                        isOneWay === item.active ? 'text-white' : 'text-slate-600'
+                        isRoundTrip === item.active ? 'text-white' : 'text-slate-600'
                      }`}>
                      {item.name}
                   </p>

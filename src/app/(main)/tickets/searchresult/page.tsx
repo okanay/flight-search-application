@@ -29,7 +29,7 @@ export default function SearchResultPage() {
 
    if (error.isError) return <TicketListError error={error} />
 
-   if (isLoading) return <TicketListLoading maxSkeletonCount={searchParams.isOneWay ? 2 : 5} />
+   if (isLoading) return <TicketListLoading maxSkeletonCount={searchParams.isRoundTrip ? 2 : 5} />
 
    return (
       <>
@@ -41,7 +41,7 @@ export default function SearchResultPage() {
             ok={searchResult?.startDestinationTickets?.ok || true}
          />
 
-         {!searchParams.isOneWay && (
+         {!searchParams.isRoundTrip && (
             <FilteredTickets
                tickets={searchResult?.endDestinationTickets?.tickets || []}
                listName={'Dönüş Biletleri'}

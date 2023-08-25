@@ -2,14 +2,14 @@
 
 import { DatePicker } from '@/components/UI/Date/DatePicker'
 import { useDispatch, useSelector } from 'react-redux'
-import { getIsoDateEnd, getIsoDateStart, getIsOneWay, setDateEnd } from '../../../../redux/slices/TicketSlice'
+import { getIsoDateEnd, getIsoDateStart, getIsRoundTrip, setDateEnd } from '../../../../redux/slices/TicketSlice'
 
 type TProps = {}
 
 export const DatePickerEnd = ({}: TProps) => {
    const dispatch = useDispatch()
 
-   const isOneWay = useSelector(getIsOneWay)
+   const isRoundTrip = useSelector(getIsRoundTrip)
    const date = useSelector(getIsoDateEnd)
    const dateStart = useSelector(getIsoDateStart)
 
@@ -21,9 +21,9 @@ export const DatePickerEnd = ({}: TProps) => {
 
    return (
       <DatePicker
-         buttonName={!isOneWay ? 'Dönüş Tarihi' : 'Tek Yön'}
+         buttonName={!isRoundTrip ? 'Dönüş Tarihi' : 'Tek Yön'}
          selectedDate={date}
-         disabledBtn={isOneWay}
+         disabledBtn={isRoundTrip}
          handleOnChangeCallBack={handleDateOnChange}
          minDate={minDate}
       />

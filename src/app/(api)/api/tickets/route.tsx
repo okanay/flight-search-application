@@ -12,7 +12,12 @@ export async function GET() {
 export async function POST(req: NextRequest) {
    const searchParams: TTicketSearchParams = await req.json()
 
-   console.log(searchParams)
+   console.log('-----------------SEARCH PARAMS ASAGIDA')
+
+   console.log(await searchParams)
+
+   console.log('-----------------MOCK DATA ASAGIDA')
+
    console.log(TicketMockData)
 
    const isValid: number | undefined = validateSearchParams(searchParams)
@@ -27,7 +32,7 @@ export async function POST(req: NextRequest) {
       startDestinationTickets: { tickets: [...startDestinationTickets], ok: startDestinationTickets.length > 0 },
       endDestinationTickets: {
          tickets: [...endDestinationTickets],
-         ok: !searchParams.isOneWay && endDestinationTickets.length > 0,
+         ok: !searchParams.isRoundTrip && endDestinationTickets.length > 0,
       },
    }
 

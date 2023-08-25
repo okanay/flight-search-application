@@ -3,7 +3,7 @@ import { TAirport } from '../../libs/constants/MockData'
 import { formatISO } from 'date-fns'
 
 export type TTicketSearchParams = {
-   isOneWay: boolean
+   isRoundTrip: boolean
    airportStart: TAirport | undefined
    airportEnd: TAirport | undefined
    isoDateStart: string | undefined
@@ -11,7 +11,7 @@ export type TTicketSearchParams = {
 }
 
 const initialState: TTicketSearchParams = {
-   isOneWay: false,
+   isRoundTrip: false,
    airportStart: undefined,
    airportEnd: undefined,
    isoDateStart: undefined,
@@ -23,16 +23,16 @@ export const TicketSlice = createSlice({
    initialState,
    reducers: {
       clearFilter: state => {
-         state.isOneWay = false
+         state.isRoundTrip = false
          state.airportStart = undefined
          state.airportEnd = undefined
          state.isoDateStart = undefined
          state.isoDateEnd = undefined
       },
       toggleIsOneWay: state => {
-         state.isOneWay = !state.isOneWay
+         state.isRoundTrip = !state.isRoundTrip
 
-         if (state.isOneWay === true) {
+         if (state.isRoundTrip === true) {
             state.isoDateEnd = undefined
          }
       },
@@ -53,7 +53,7 @@ export const TicketSlice = createSlice({
 })
 
 export const getTicketData = (state: any) => state.ticketSlice
-export const getIsOneWay = (state: any) => state.ticketSlice.isOneWay
+export const getIsRoundTrip = (state: any) => state.ticketSlice.isRoundTrip
 export const getAirportStart = (state: any) => state.ticketSlice.airportStart
 export const getAirportEnd = (state: any) => state.ticketSlice.airportEnd
 export const getIsoDateStart = (state: any) => state.ticketSlice.isoDateStart
