@@ -54,8 +54,8 @@ export const DestinationPicker = ({
       <div className={`relative flex w-fit flex-col items-start`}>
          <button
             type={'button'}
-            className={`h-[60px] w-[200px] border-b-[2px] text-slate-600 transition-colors duration-300 hover:border-b-primary-600 focus:border-b-primary-600
-             ${isOpen ? 'border-b-primary-600' : 'border-b-slate-400'}`}
+            className={`h-[64px] w-[200px] border-b-[2px] text-slate-600 transition-colors duration-300 hover:border-b-primary-400 focus:border-b-primary-400
+             ${isOpen ? 'border-b-primary-400' : 'border-b-slate-400'}`}
             ref={buttonRef}
             onClick={handleMenuToggle as any}>
             <>

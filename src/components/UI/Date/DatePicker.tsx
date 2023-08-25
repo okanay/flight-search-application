@@ -17,7 +17,10 @@ type TProps = {
 }
 
 export const DatePicker = ({ buttonName, selectedDate, handleOnChangeCallBack, minDate, disabledBtn = false }: TProps) => {
-   const currentDate = new Date()
+   // Check Readme File.
+   const minInitialDate = new Date('2023-08-25T00:00:00Z')
+   const maxInitialDate = new Date('2023-09-15T00:00:00Z')
+
    const [isOpen, setIsOpen] = useState(false)
 
    const handleOnChange = (value: Date) => handleOnChangeCallBack(value)
@@ -35,8 +38,8 @@ export const DatePicker = ({ buttonName, selectedDate, handleOnChangeCallBack, m
       <div className={`flex flex-col items-end`}>
          <button
             disabled={disabledBtn}
-            className={`disabled:border-b-200 group h-[60px] w-[200px] border-b-[2px] text-slate-600 transition-colors duration-300 hover:border-b-primary-600 focus:border-b-primary-600 disabled:cursor-not-allowed disabled:border-b-slate-200 disabled:hover:border-b-slate-200
-             ${isOpen ? 'border-b-primary-600' : 'border-b-slate-400'}`}
+            className={`disabled:border-b-200 group h-[64px] w-[200px] border-b-[2px] text-slate-600 transition-colors duration-300 hover:border-b-primary-400 focus:border-b-primary-400 disabled:cursor-not-allowed disabled:border-b-slate-200 disabled:hover:border-b-slate-200
+             ${isOpen ? 'border-b-primary-400' : 'border-b-slate-400'}`}
             type={'button'}
             ref={buttonRef}
             onClick={handleMenuToggle as any}>
@@ -61,7 +64,8 @@ export const DatePicker = ({ buttonName, selectedDate, handleOnChangeCallBack, m
                   showNeighboringMonth={true}
                   showNavigation={true}
                   defaultValue={selectedDate}
-                  minDate={minDate !== undefined ? minDate : currentDate}
+                  minDate={minDate !== undefined ? minDate : minInitialDate}
+                  maxDate={maxInitialDate}
                   nextLabel={<NextLabel />}
                   next2Label={<Next2Label />}
                   prevLabel={<PrevLabel />}

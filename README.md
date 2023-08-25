@@ -1,19 +1,12 @@
-This is a [Next.js](https://nextjs.org/) project bootstrapped with
-[`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
+This is a [Next JS v13.4](https://nextjs.org/)  project
 
-## Getting Started
 
-First, run the development server:
+### Min and Max [DatePicker](https://github.com/okanay/flight-search-application/blob/318da71238b5f38f80652045166acd9611e1542b/src/components/UI/Date/DatePicker.tsx) Time for Mock TicketsData
 
 ```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
 
-
-## ``Bold`` Some descriptions?
-```
+../src/components/UI/Date/DatePicker.tsx
+const minInitialDate = new Date('2023-08-25T00:00:00Z')
+const maxInitialDate = new Date('2023-09-15T00:00:00Z')
 
 ```
