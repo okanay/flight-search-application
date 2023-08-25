@@ -1,8 +1,7 @@
 import { NextRequest, NextResponse } from 'next/server'
 import { TTicketSearchParams } from '../../../../../redux/slices/TicketSlice'
-import { TAirport, TFlightTicket, TicketMockData } from '../../../../../libs/constants/MockData'
+import { TFlightTicket, TicketMockData } from '../../../../../libs/constants/MockData'
 import { IsTicketExist } from '../../../../../libs/helpers/IsTicketExist'
-import { ok } from 'assert'
 import { validateSearchParams } from '../../../../../libs/helpers/ValidateSearchParams'
 
 export async function GET() {
@@ -11,9 +10,10 @@ export async function GET() {
 }
 
 export async function POST(req: NextRequest) {
-   console.log('run')
-
    const searchParams: TTicketSearchParams = await req.json()
+
+   console.log(searchParams)
+   console.log(TicketMockData)
 
    const isValid: number | undefined = validateSearchParams(searchParams)
    if (isValid !== undefined) return NextResponse.json({ error: '' }, { status: isValid as number })
