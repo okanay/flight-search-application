@@ -11,6 +11,8 @@ export async function GET() {
 }
 
 export async function POST(req: NextRequest) {
+   console.log('run')
+
    const searchParams: TTicketSearchParams = await req.json()
 
    const isValid: number | undefined = validateSearchParams(searchParams)

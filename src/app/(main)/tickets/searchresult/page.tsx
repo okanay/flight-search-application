@@ -55,12 +55,12 @@ export default function SearchResultPage() {
 }
 
 const TicketSearchFetchPost = async (searchParams: TTicketSearchParams, setError: Dispatch<SetStateAction<TFetchError>>) => {
-   await new Promise(resolve => setTimeout(resolve, 500))
+   // await new Promise(resolve => setTimeout(resolve, 500))
 
    const isValid = validateSearchParams(searchParams)
    if (isValid !== undefined) return setError({ isError: true, status: isValid })
 
-   await new Promise(resolve => setTimeout(resolve, 1000))
+   // await new Promise(resolve => setTimeout(resolve, 1000))
 
    try {
       const response = await fetch('/api/tickets', {

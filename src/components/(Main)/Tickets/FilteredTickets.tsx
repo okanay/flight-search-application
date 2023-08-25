@@ -8,8 +8,6 @@ import { CalendarIcon, CurrencyDollarIcon, FlagIcon } from '@heroicons/react/20/
 
 import { FilterButton } from '@/components/UI/FilterButton'
 import { TicketList } from '@/components/(Main)/Tickets/TicketList'
-import { TicketListLoading } from '@/components/(Main)/Tickets/TicketListLoading'
-import { TicketListError } from '@/components/(Main)/Tickets/TicketListError'
 
 type TProps = {
    tickets: TFlightTicket[]

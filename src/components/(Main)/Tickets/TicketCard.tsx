@@ -1,8 +1,7 @@
 import { TFlightTicket } from '../../../../libs/constants/MockData'
-import { format } from 'date-fns'
-import { tr } from 'date-fns/locale'
 import { FormattedDate } from '../../../../libs/helpers/FormattedDate'
 import Image from 'next/image'
+import Word from '../../../../public/word.svg'
 
 type TProps = {
    ticket: TFlightTicket
@@ -41,7 +40,7 @@ export const TicketCard = ({ ticket }: TProps) => {
                </p>
             </div>
             <div className={'absolute inset-0 z-10'}>
-               <Image src={'/word.svg'} alt={'word'} fill={true} className={'scale-95'} />
+               <Image src={Word} alt={'word'} fill={true} className={'scale-95'} />
             </div>
             <div className={'relative z-20 flex flex-col items-end justify-end gap-y-2'}>
                <p className={'rounded-lg border border-slate-100 bg-slate-700 px-4 py-1 shadow shadow-slate-200'}>
