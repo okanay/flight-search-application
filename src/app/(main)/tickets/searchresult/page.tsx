@@ -3,16 +3,13 @@
 import { getTicketData, TTicketSearchParams } from '../../../../../redux/slices/TicketSlice'
 import { useQuery } from '@tanstack/react-query'
 import { FilteredTickets } from '@/components/(Main)/Tickets/FilteredTickets'
-
 import { useSelector } from 'react-redux'
-
-import { Dispatch, SetStateAction, useEffect, useState } from 'react'
+import { Dispatch, SetStateAction, useState } from 'react'
 import { TFetchError } from '../../../../../libs/types/types'
 import { TTicketFetchResponse } from '@/app/(api)/api/tickets/route'
 import { TicketListError } from '@/components/(Main)/Tickets/TicketListError'
 import { TicketListLoading } from '@/components/(Main)/Tickets/TicketListLoading'
-import { NextResponse } from 'next/server'
-import { useRouter } from 'next/router'
+import { validateSearchParams } from '../../../../../libs/helpers/ValidateSearchParams'
 
 export default function SearchResultPage() {
    const searchParams: TTicketSearchParams = useSelector(getTicketData)
@@ -60,24 +57,26 @@ export default function SearchResultPage() {
 const TicketSearchFetchPost = async (searchParams: TTicketSearchParams, setError: Dispatch<SetStateAction<TFetchError>>) => {
    await new Promise(resolve => setTimeout(resolve, 500))
 
-   if (!searchParams.airportStart) return setError({ isError: true, status: 405 })
-   else if (!searchParams.airportEnd) return setError({ isError: true, status: 406 })
-   else if (!searchParams.isoDateStart) return setError({ isError: true, status: 407 })
-   else if (!searchParams.isOneWay && !searchParams.isoDateEnd) return setError({ isError: true, status: 408 })
+   const isValid = validateSearchParams(searchParams)
+   if (isValid !== undefined) return setError({ isError: true, status: isValid })
 
    await new Promise(resolve => setTimeout(resolve, 1000))
 
-   const response = await fetch('/api/tickets', {
-      method: 'POST',
-      body: JSON.stringify({ ...searchParams }),
-      headers: { 'Content-Type': 'application/json' },
-      cache: 'no-cache',
-   })
+   try {
+      const response = await fetch('/api/tickets', {
+         method: 'POST',
+         body: JSON.stringify({ ...searchParams }),
+         headers: { 'Content-Type': 'application/json' },
+         cache: 'no-cache',
+      })
 
-   if (response.ok) {
-      const json = await response.json()
-      return await json.data
-   } else {
-      setError({ isError: true, status: response.status })
+      if (response.ok) {
+         const json = await response.json()
+         return json.data
+      } else {
+         setError({ isError: true, status: response.status })
+      }
+   } catch (error) {
+      setError({ isError: true, status: 500 })
    }
 }
