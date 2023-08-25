@@ -12,21 +12,16 @@ export async function GET() {
 export async function POST(req: NextRequest) {
    const searchParams: TTicketSearchParams = await req.json()
 
-   console.log('-----------------SEARCH PARAMS ASAGIDA')
-
-   console.log(await searchParams)
-
-   console.log('-----------------MOCK DATA ASAGIDA')
-
-   console.log(TicketMockData)
-
    const isValid: number | undefined = validateSearchParams(searchParams)
    if (isValid !== undefined) return NextResponse.json({ error: '' }, { status: isValid as number })
 
-   // @ts-ignore
-   const startDestinationTickets: TFlightTicket[] = IsTicketExist(searchParams.airportStart.id, searchParams.isoDateStart) || []
-   // @ts-ignore
-   const endDestinationTickets: TFlightTicket[] = IsTicketExist(searchParams.airportEnd.id, searchParams.isoDateEnd) || []
+   let startDestinationTickets: TFlightTicket[] = []
+   let endDestinationTickets: TFlightTicket[] = []
+
+   if (searchParams?.airportStart?.id !== undefined && searchParams?.airportEnd?.id) {
+      startDestinationTickets = IsTicketExist(searchParams.airportStart.id, searchParams.isoDateStart) || []
+      endDestinationTickets = IsTicketExist(searchParams.airportEnd.id, searchParams.isoDateEnd) || []
+   }
 
    const data: TTicketFetchResponse = {
       startDestinationTickets: { tickets: [...startDestinationTickets], ok: startDestinationTickets.length > 0 },
