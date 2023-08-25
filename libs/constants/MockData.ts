@@ -191,11 +191,18 @@ const AirportsMockData: TAirport[] = [
 
 const TicketMockData: TFlightTicket[] = [
    {
-      ticketId: 1,
-      destinationStart: AirportsMockData[0], // İstanbul Havalimanı
-      destinationEnd: AirportsMockData[3], // İzmir
-      isoFlightDate: '2023-08-26T12:00:00+03:00', // 26 Ağustos 2023, saat 12:00
-      ticketPrice: 1699,
+      ticketId: 5,
+      destinationStart: AirportsMockData[11], // New York
+      destinationEnd: AirportsMockData[12], // Los Angeles
+      isoFlightDate: '2023-08-30T16:30:00+03:00', // 30 Ağustos 2023, saat 16:30
+      ticketPrice: 1142,
+   },
+   {
+      ticketId: 6,
+      destinationStart: AirportsMockData[14], // Toronto
+      destinationEnd: AirportsMockData[1], // İstanbul Sabiha Gökçen
+      isoFlightDate: '2023-08-31T17:45:00+03:00', // 31 Ağustos 2023, saat 17:45
+      ticketPrice: 1449,
    },
    {
       ticketId: 2,
@@ -219,18 +226,18 @@ const TicketMockData: TFlightTicket[] = [
       ticketPrice: 1764,
    },
    {
-      ticketId: 5,
-      destinationStart: AirportsMockData[11], // New York
-      destinationEnd: AirportsMockData[12], // Los Angeles
-      isoFlightDate: '2023-08-30T16:30:00+03:00', // 30 Ağustos 2023, saat 16:30
-      ticketPrice: 1142,
+      ticketId: 1,
+      destinationStart: AirportsMockData[0], // İstanbul Havalimanı
+      destinationEnd: AirportsMockData[3], // İzmir
+      isoFlightDate: '2023-08-26T12:00:00+03:00', // 26 Ağustos 2023, saat 12:00
+      ticketPrice: 1699,
    },
    {
-      ticketId: 6,
-      destinationStart: AirportsMockData[14], // Toronto
-      destinationEnd: AirportsMockData[1], // İstanbul Sabiha Gökçen
-      isoFlightDate: '2023-08-31T17:45:00+03:00', // 31 Ağustos 2023, saat 17:45
-      ticketPrice: 1449,
+      ticketId: 1,
+      destinationStart: AirportsMockData[0], // İstanbul Havalimanı
+      destinationEnd: AirportsMockData[3], // İzmir
+      isoFlightDate: '2023-08-26T11:00:00+03:00', // 26 Ağustos 2023, saat 12:00
+      ticketPrice: 1940,
    },
 ]
 

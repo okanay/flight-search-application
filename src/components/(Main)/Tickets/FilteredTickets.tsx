@@ -1,0 +1,97 @@
+'use client'
+
+import { Dispatch, ReactComponentElement, ReactNode, SetStateAction, useEffect, useState } from 'react'
+import { TFlightTicket, TicketMockData } from '../../../../libs/constants/MockData'
+import { TicketListHandle } from '@/components/(Main)/Tickets/TicketListHandle'
+import { CalendarIcon, CurrencyDollarIcon, FlagIcon } from '@heroicons/react/20/solid'
+import { FilterButton } from '@/components/UI/FilterButton'
+
+type TProps = {
+   tickets: TFlightTicket[]
+   listName: string
+   loading?: boolean
+   error?: boolean
+}
+
+type TFilterNames = 'orderByPrice' | 'orderByDate' | 'orderByFlag'
+
+export const FilteredTickets = ({ tickets, listName, error = false, loading = false }: TProps) => {
+   const [orderByPrice, setOrderByPrice] = useState('')
+   const [orderByDate, setOrderByDate] = useState('')
+   const [orderByFlag, setOrderByFlag] = useState('')
+
+   let filteredTickets: TFlightTicket[] = [...tickets]
+
+   if (orderByPrice === 'asc') {
+      filteredTickets.sort((a, b) => b.ticketPrice - a.ticketPrice)
+   } else if (orderByPrice === 'desc') {
+      filteredTickets.sort((a, b) => a.ticketPrice - b.ticketPrice)
+   }
+
+   if (orderByDate === 'asc') {
+      filteredTickets.sort((a, b) => new Date(a.isoFlightDate).getTime() - new Date(b.isoFlightDate).getTime())
+   } else if (orderByDate === 'desc') {
+      filteredTickets.sort((a, b) => new Date(b.isoFlightDate).getTime() - new Date(a.isoFlightDate).getTime())
+   }
+
+   if (orderByFlag === 'asc') {
+      filteredTickets.sort((a, b) => a.destinationStart.countryName.localeCompare(b.destinationStart.countryName))
+   } else if (orderByFlag === 'desc') {
+      filteredTickets.sort((a, b) => b.destinationStart.countryName.localeCompare(a.destinationStart.countryName))
+   }
+
+   const resetOtherFilters = (currentFilter: TFilterNames) => {
+      if (currentFilter !== 'orderByPrice') {
+         setOrderByPrice('')
+      }
+      if (currentFilter !== 'orderByDate') {
+         setOrderByDate('')
+      }
+      if (currentFilter !== 'orderByFlag') {
+         setOrderByFlag('')
+      }
+   }
+
+   const handleSortChange = (filterName: TFilterNames, state: string, setState: Dispatch<SetStateAction<string>>) => {
+      resetOtherFilters(filterName)
+
+      if (state === '') {
+         setState('asc')
+      } else if (state === 'asc') {
+         setState('desc')
+      } else if (state === 'desc') {
+         setState('')
+      }
+   }
+
+   return (
+      <TicketListHandle tickets={filteredTickets} listName={listName} loading={loading} error={error}>
+         <div className={'flex flex-row items-center justify-start gap-4 rounded-lg border border-slate-200 px-4 py-2'}>
+            <FilterButton
+               buttonName={'Tarih'}
+               ButtonIcon={<CalendarIcon className={'w-[24px]'} />}
+               onClick={() => {
+                  handleSortChange('orderByDate', orderByDate, setOrderByDate)
+               }}
+               state={orderByDate}
+            />
+            <FilterButton
+               buttonName={'Fiyat'}
+               ButtonIcon={<CurrencyDollarIcon className={'w-[24px]'} />}
+               onClick={() => {
+                  handleSortChange('orderByPrice', orderByPrice, setOrderByPrice)
+               }}
+               state={orderByPrice}
+            />
+            <FilterButton
+               buttonName={'Ülke'}
+               ButtonIcon={<FlagIcon className={'w-[24px]'} />}
+               onClick={() => {
+                  handleSortChange('orderByFlag', orderByFlag, setOrderByFlag)
+               }}
+               state={orderByFlag}
+            />
+         </div>
+      </TicketListHandle>
+   )
+}
