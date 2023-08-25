@@ -16,8 +16,8 @@ export const TicketListError = ({ error, children }: TProps) => {
                'flex h-96 w-full flex-col items-center justify-center text-center text-start font-plexSerif text-2xl font-bold text-primary-400'
             }>
             <h1>{errorMessage(error.status)}</h1>
-            <Link href={'/'} locale={'tr'} className={'my-4 rounded border border-slate-600 px-3 py-5 text-slate-600'}>
-               Anasayfa Dön
+            <Link href={'/'} locale={'tr'} className={'my-4 rounded border border-slate-800 px-2 py-4 text-slate-800'}>
+               Tekrar Dene
             </Link>
          </div>
       </div>

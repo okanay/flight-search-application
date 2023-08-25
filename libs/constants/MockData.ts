@@ -246,6 +246,41 @@ const TicketMockData: TFlightTicket[] = [
       isoFlightDate: '2023-08-28T11:00:00+03:00', // 26 Ağustos 2023, saat 12:00
       ticketPrice: 1940,
    },
+   {
+      ticketId: 9,
+      destinationStart: AirportsMockData[2], // Antalya
+      destinationEnd: AirportsMockData[6], // Bodrum
+      isoFlightDate: '2023-08-27T13:30:00+03:00', // 27 Ağustos 2023, saat 13:30
+      ticketPrice: 1399,
+   },
+   {
+      ticketId: 10,
+      destinationStart: AirportsMockData[9], // Dalaman
+      destinationEnd: AirportsMockData[5], // Paris
+      isoFlightDate: '2023-08-30T17:15:00+03:00', // 28 Ağustos 2023, saat 14:45
+      ticketPrice: 1299,
+   },
+   {
+      ticketId: 11,
+      destinationStart: AirportsMockData[2], // Antalya
+      destinationEnd: AirportsMockData[6], // Bodrum
+      isoFlightDate: '2023-08-27T13:30:00+03:00', // 27 Ağustos 2023, saat 13:30
+      ticketPrice: 1399,
+   },
+   {
+      ticketId: 12,
+      destinationStart: AirportsMockData[5], // Dalaman
+      destinationEnd: AirportsMockData[9], // Paris
+      isoFlightDate: '2023-08-28T12:45:00+03:00', // 28 Ağustos 2023, saat 14:45
+      ticketPrice: 1099,
+   },
+   {
+      ticketId: 13,
+      destinationStart: AirportsMockData[7], // Frankfurt
+      destinationEnd: AirportsMockData[10], // Nice
+      isoFlightDate: '2023-08-29T15:15:00+03:00', // 29 Ağustos 2023, saat 15:15
+      ticketPrice: 1764,
+   },
 ]
 
 export { TicketMockData, CountriesMockData, AirportsMockData }
