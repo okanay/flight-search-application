@@ -2,7 +2,7 @@ import { createSlice } from '@reduxjs/toolkit'
 import { TAirport } from '../../libs/constants/MockData'
 import { formatISO } from 'date-fns'
 
-export type TTicket = {
+export type TTicketSearchParams = {
    isOneWay: boolean
    airportStart: TAirport | undefined
    airportEnd: TAirport | undefined
@@ -10,7 +10,7 @@ export type TTicket = {
    isoDateEnd: string | undefined
 }
 
-const initialState: TTicket = {
+const initialState: TTicketSearchParams = {
    isOneWay: false,
    airportStart: undefined,
    airportEnd: undefined,

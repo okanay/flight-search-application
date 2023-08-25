@@ -4,9 +4,8 @@ export const IsTicketExist = (destinationStartId: number, date: string | undefin
    const destinationStartDate = date !== undefined ? new Date(date) : undefined
 
    if (destinationStartDate !== undefined) {
-      return TicketMockData.find(ticket => {
+      return TicketMockData.filter(ticket => {
          const ticketStartDate = new Date(ticket.isoFlightDate)
-
          if (
             ticketStartDate.getDate() === destinationStartDate.getDate() &&
             ticketStartDate.getMonth() === destinationStartDate.getMonth() &&

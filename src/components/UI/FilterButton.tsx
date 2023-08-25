@@ -13,7 +13,7 @@ export const FilterButton = ({ buttonName, ButtonIcon, onClick, state }: TFilter
          onClick={onClick}
          className={`${state !== '' ? (state !== 'desc' ? 'bg-slate-800' : 'bg-primary-400') : 'bg-slate-100'}
              flex flex-shrink-0 flex-col items-center justify-center gap-[4px] rounded-lg border border-slate-200 px-[16px] py-[8px] transition-colors duration-300`}>
-         <span className={`${state !== '' ? (state !== 'desc' ? 'text-white' : 'text-white') : 'text-slate-800'}`}>
+         <span className={`${state !== '' ? (state !== 'desc' ? 'text-white' : 'text-white') : 'text-primary-400'}`}>
             {ButtonIcon}
          </span>
          <p

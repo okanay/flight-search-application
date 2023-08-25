@@ -11,6 +11,8 @@ type TProps = {
 }
 
 export const TicketList = ({ tickets, listName, children }: TProps) => {
+   console.log(tickets)
+
    return (
       <div className={'mx-auto flex h-full h-full min-w-[320px] max-w-7xl flex-col items-center justify-center px-4'}>
          <div className={'flex h-full w-full max-w-[800px] flex-col items-start justify-start gap-4 px-4 py-4'}>

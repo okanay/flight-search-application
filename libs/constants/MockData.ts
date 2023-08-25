@@ -233,10 +233,17 @@ const TicketMockData: TFlightTicket[] = [
       ticketPrice: 1699,
    },
    {
-      ticketId: 1,
+      ticketId: 7,
       destinationStart: AirportsMockData[0], // İstanbul Havalimanı
       destinationEnd: AirportsMockData[3], // İzmir
       isoFlightDate: '2023-08-26T11:00:00+03:00', // 26 Ağustos 2023, saat 12:00
+      ticketPrice: 1940,
+   },
+   {
+      ticketId: 8,
+      destinationStart: AirportsMockData[3], // İstanbul Havalimanı
+      destinationEnd: AirportsMockData[0], // İzmir
+      isoFlightDate: '2023-08-28T11:00:00+03:00', // 26 Ağustos 2023, saat 12:00
       ticketPrice: 1940,
    },
 ]

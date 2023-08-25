@@ -1,21 +1,27 @@
 'use client'
 
-import { Dispatch, ReactComponentElement, ReactNode, SetStateAction, useEffect, useState } from 'react'
-import { TFlightTicket, TicketMockData } from '../../../../libs/constants/MockData'
-import { TicketListHandle } from '@/components/(Main)/Tickets/TicketListHandle'
+import { Dispatch, SetStateAction, useState } from 'react'
+import { TFlightTicket } from '../../../../libs/constants/MockData'
+import { TFetchError } from '../../../../libs/types/types'
+
 import { CalendarIcon, CurrencyDollarIcon, FlagIcon } from '@heroicons/react/20/solid'
+
 import { FilterButton } from '@/components/UI/FilterButton'
+import { TicketList } from '@/components/(Main)/Tickets/TicketList'
+import { TicketListLoading } from '@/components/(Main)/Tickets/TicketListLoading'
+import { TicketListError } from '@/components/(Main)/Tickets/TicketListError'
 
 type TProps = {
    tickets: TFlightTicket[]
    listName: string
    loading?: boolean
-   error?: boolean
+   error?: TFetchError
+   ok?: boolean
 }
 
-type TFilterNames = 'orderByPrice' | 'orderByDate' | 'orderByFlag'
+type TFilterNames = 'orderByPrice' | 'orderByDate' | 'orderByFlag' | 'orderByCity'
 
-export const FilteredTickets = ({ tickets, listName, error = false, loading = false }: TProps) => {
+export const FilteredTickets = ({ tickets, listName, error, loading = false, ok = true }: TProps) => {
    const [orderByPrice, setOrderByPrice] = useState('')
    const [orderByDate, setOrderByDate] = useState('')
    const [orderByFlag, setOrderByFlag] = useState('')
@@ -65,33 +71,39 @@ export const FilteredTickets = ({ tickets, listName, error = false, loading = fa
    }
 
    return (
-      <TicketListHandle tickets={filteredTickets} listName={listName} loading={loading} error={error}>
-         <div className={'flex flex-row items-center justify-start gap-4 rounded-lg border border-slate-200 px-4 py-2'}>
-            <FilterButton
-               buttonName={'Tarih'}
-               ButtonIcon={<CalendarIcon className={'w-[24px]'} />}
-               onClick={() => {
-                  handleSortChange('orderByDate', orderByDate, setOrderByDate)
-               }}
-               state={orderByDate}
-            />
-            <FilterButton
-               buttonName={'Fiyat'}
-               ButtonIcon={<CurrencyDollarIcon className={'w-[24px]'} />}
-               onClick={() => {
-                  handleSortChange('orderByPrice', orderByPrice, setOrderByPrice)
-               }}
-               state={orderByPrice}
-            />
-            <FilterButton
-               buttonName={'Ülke'}
-               ButtonIcon={<FlagIcon className={'w-[24px]'} />}
-               onClick={() => {
-                  handleSortChange('orderByFlag', orderByFlag, setOrderByFlag)
-               }}
-               state={orderByFlag}
-            />
-         </div>
-      </TicketListHandle>
+      <TicketList listName={listName} tickets={filteredTickets}>
+         {filteredTickets.length > 0 ? (
+            <div className={'flex flex-row items-center justify-start gap-4 rounded-lg border border-slate-200 px-4 py-2'}>
+               <FilterButton
+                  buttonName={'Tarih'}
+                  ButtonIcon={<CalendarIcon className={'w-[24px]'} />}
+                  onClick={() => {
+                     handleSortChange('orderByDate', orderByDate, setOrderByDate)
+                  }}
+                  state={orderByDate}
+               />
+               <FilterButton
+                  buttonName={'Fiyat'}
+                  ButtonIcon={<CurrencyDollarIcon className={'w-[24px]'} />}
+                  onClick={() => {
+                     handleSortChange('orderByPrice', orderByPrice, setOrderByPrice)
+                  }}
+                  state={orderByPrice}
+               />
+               <FilterButton
+                  buttonName={'Ülke'}
+                  ButtonIcon={<FlagIcon className={'w-[24px]'} />}
+                  onClick={() => {
+                     handleSortChange('orderByFlag', orderByFlag, setOrderByFlag)
+                  }}
+                  state={orderByFlag}
+               />
+            </div>
+         ) : (
+            <div>
+               <p className={'font-openSans text-[16px] font-semibold text-slate-800 baseTablet:text-[20px]'}>Sonuc Bulunamadi</p>
+            </div>
+         )}
+      </TicketList>
    )
 }
