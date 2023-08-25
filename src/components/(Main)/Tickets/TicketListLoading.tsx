@@ -1,20 +1,20 @@
 import { range } from '../../../../libs/helpers/InlineArray'
 import { nanoid } from '@reduxjs/toolkit'
 
-export const TicketListLoading = () => {
+export const TicketListLoading = ({ maxSkeletonCount }: { maxSkeletonCount: number }) => {
    return (
       <div className={'mx-auto flex h-full h-full min-w-[320px] max-w-7xl flex-col items-center justify-center'}>
          <div className={'flex h-full w-full max-w-[800px] flex-col items-start justify-start gap-4 px-4 py-4'}>
             <div className={'ml-4 flex w-full flex-row items-center justify-start gap-4'}>
-               <div className="h-[45px] w-[45px] animate-pulse rounded-full bg-slate-400" />
-               <div className="h-[45px] w-[200px] animate-pulse rounded-lg bg-slate-400" />
+               <div className="h-[40px] w-[40px] animate-pulse rounded-full bg-slate-400" />
+               <div className="h-[45px] w-[175px] animate-pulse rounded-lg bg-slate-400" />
             </div>
             <div className={'ml-4 flex w-full flex-row items-center justify-start gap-4'}>
-               <div className="h-[60px] w-[80px] animate-pulse rounded-lg bg-slate-400" />
-               <div className="h-[60px] w-[80px] animate-pulse rounded-lg bg-slate-400" />
+               <div className="h-[40px] w-[60px] animate-pulse rounded-lg bg-slate-400" />
+               <div className="h-[40px] w-[60px] animate-pulse rounded-lg bg-slate-400" />
             </div>
             <div className={'flex h-full w-full max-w-[800px] flex-col items-start justify-start gap-4 px-4 py-4'}>
-               {range(0, 4).map(i => (
+               {range(0, maxSkeletonCount - 1).map(i => (
                   <CardLoading key={nanoid()} />
                ))}
             </div>
