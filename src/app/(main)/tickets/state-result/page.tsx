@@ -59,6 +59,7 @@ const TicketSearchFetchPost = async (searchParams: TTicketSearchParams, setError
          body: JSON.stringify({ ...searchParams }),
          headers: { 'Content-Type': 'application/json' },
          cache: 'no-cache',
+         next: { revalidate: 30 },
       })
 
       if (response.ok) {
