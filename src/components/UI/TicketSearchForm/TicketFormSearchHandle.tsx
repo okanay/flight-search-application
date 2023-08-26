@@ -57,7 +57,7 @@ export const TicketFormSearchHandle = () => {
          onClick={handleOnClick}
          type={'button'}
          className="flex h-[52px] flex-col items-center justify-center
-         rounded-lg border border-primary-500 bg-gradient-to-tr from-primary-50 to-primary-100/40
+         rounded-lg border border-primary-950/10 bg-gradient-to-tr from-primary-50 to-primary-100/40
          px-4 text-center text-[16px] font-semibold tracking-wide text-primary-500 transition-all duration-500 hover:text-primary-400 hover:opacity-90">
          <span>BİLET ARA</span>
       </button>

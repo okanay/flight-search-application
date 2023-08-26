@@ -28,8 +28,8 @@ export const TicketFormSearchTypeToggle = () => {
          }}
          className={'group flex flex-col'}>
          <div
-            className="group absolute right-2 top-4 flex flex-row justify-between gap-2
-          border border-slate-200 bg-gradient-to-tr from-slate-200 to-slate-100 px-1 py-2 font-openSans shadow shadow-slate-200">
+            className="group absolute right-2 top-2 flex flex-row justify-between gap-2 rounded-lg border
+          border-slate-200 bg-gradient-to-tr from-slate-200 to-slate-100 px-1 py-2 font-openSans shadow shadow-slate-200 baseTablet:top-4">
             {selectableTab.map(item => (
                <div
                   key={nanoid()}
