@@ -1,29 +1,27 @@
 import { TFlightTicket } from '../../../../../libs/constants/MockData'
 import { IsTicketExist } from '../../../../../libs/helpers/IsTicketExist'
 import { FilteredTickets } from '@/components/(Main)/Tickets/FilteredTickets'
-import { errorMessage } from '../../../../../libs/helpers/ValidateSearchParams'
-import { CustomError } from '../../../../../libs/helpers/CustomError'
+import { ValidateSearchParams } from '../../../../../libs/helpers/ValidateStateParams'
+
+export type TValidationSearchParams = {
+   startId: string
+   startDate: string
+   endId: string
+   endDate: string
+   trip: string
+   state: string
+}
 
 type TProps = {
    params: {
       num?: string
    }
-   searchParams: {
-      startId: string
-      startDate: string
-      endId: string
-      endDate: string
-      trip: string
-      state: string
-   }
+   searchParams: TValidationSearchParams
 }
 
 export default async function ParamsResultPage({ params, searchParams }: TProps) {
    const { startId, startDate, endId, endDate, trip, state } = searchParams
-
-   if (startId === undefined) {
-      throw new Error('600')
-   }
+   ValidateSearchParams(searchParams)
 
    const ticketsStart: TFlightTicket[] = IsTicketExist(Number(startId), startDate) || []
    const ticketsEnd: TFlightTicket[] = IsTicketExist(Number(endId), endDate) || []
@@ -33,7 +31,7 @@ export default async function ParamsResultPage({ params, searchParams }: TProps)
    return (
       <>
          <FilteredTickets tickets={ticketsStart} listName={'Gidiş Biletleri'} />
-         {Boolean(trip) && (
+         {trip === 'true' && (
             <>
                <FilteredTickets tickets={ticketsEnd} listName={'Dönüş Biletleri'} />
             </>

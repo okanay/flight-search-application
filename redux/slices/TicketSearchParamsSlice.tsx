@@ -33,7 +33,7 @@ export const TicketSearchParamsSlice = createSlice({
       toggleIsRoundTrip: state => {
          state.isRoundTrip = !state.isRoundTrip
 
-         if (state.isRoundTrip === true) {
+         if (state.isRoundTrip === false) {
             state.isoDateEnd = undefined
          }
       },

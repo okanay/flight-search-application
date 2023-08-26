@@ -1,5 +1,5 @@
 import { createSlice } from '@reduxjs/toolkit'
-import { errorMessage } from '../../libs/helpers/ValidateSearchParams'
+import { errorMessage } from '../../libs/helpers/ValidateStateParams'
 import exp from 'constants'
 
 export type TTicketSearchFormError = {

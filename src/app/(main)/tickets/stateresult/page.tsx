@@ -8,7 +8,7 @@ import { useQuery } from '@tanstack/react-query'
 import { FilteredTickets } from '@/components/(Main)/Tickets/FilteredTickets'
 import { TicketListError } from '@/components/(Main)/Tickets/TicketListError'
 import { TicketListLoading } from '@/components/(Main)/Tickets/TicketListLoading'
-import { ValidateSearchParams } from '../../../../../libs/helpers/ValidateSearchParams'
+import { ValidateStateParams } from '../../../../../libs/helpers/ValidateStateParams'
 
 import { useSelector } from 'react-redux'
 import { usePathname, useRouter, useSearchParams } from 'next/navigation'
@@ -62,7 +62,7 @@ export default function SearchResultPage() {
 const TicketSearchFetchPost = async (searchParams: TTicketSearchParams, setError: Dispatch<SetStateAction<TFetchError>>) => {
    await new Promise(resolve => setTimeout(resolve, 750))
 
-   const isValid = ValidateSearchParams(searchParams)
+   const isValid = ValidateStateParams(searchParams)
    if (isValid !== undefined) return setError({ isError: true, status: isValid })
 
    try {

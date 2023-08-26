@@ -1,6 +1,6 @@
 import { TFetchError } from '../../../../libs/types/types'
 import { ReactNode } from 'react'
-import { errorMessage } from '../../../../libs/helpers/ValidateSearchParams'
+import { errorMessage } from '../../../../libs/helpers/ValidateStateParams'
 import Link from 'next/link'
 
 type TProps = {

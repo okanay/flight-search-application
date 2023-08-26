@@ -4,7 +4,7 @@ import { useDispatch, useSelector } from 'react-redux'
 
 import { useRouter } from 'next/navigation'
 import { getTicketSearchParams, TTicketSearchParams } from '../../../../redux/slices/TicketSearchParamsSlice'
-import { ValidateSearchParams } from '../../../../libs/helpers/ValidateSearchParams'
+import { ValidateStateParams } from '../../../../libs/helpers/ValidateStateParams'
 import { clearError, setError } from '../../../../redux/slices/TicketSearchFormErrorSlice'
 //
 //
@@ -15,7 +15,7 @@ export const TicketSearchButton = () => {
    const formParams: TTicketSearchParams = useSelector(getTicketSearchParams)
 
    const handleOnClick = () => {
-      const isValid = ValidateSearchParams(formParams)
+      const isValid = ValidateStateParams(formParams)
       if (isValid === undefined) {
          dispatch(clearError())
          if (formParams.isSearchFilterTypeStateOrParams) {
@@ -24,14 +24,13 @@ export const TicketSearchButton = () => {
                startDate: formParams.isoDateStart || 'empty',
                endId: formParams.airportEnd?.id || 'empty',
                endDate: formParams.isoDateEnd || 'empty',
-               trip: formParams.isRoundTrip || 'empty',
-               state: formParams.isSearchFilterTypeStateOrParams || 'empty',
+               trip: formParams.isRoundTrip ? 'true' : 'false',
             }
             const url = `/tickets/paramsresult?startId=${encodeURIComponent(srcParams.startId)}&startDate=${encodeURIComponent(
                srcParams.startDate,
             )}&endId=${encodeURIComponent(srcParams.endId)}&endDate=${encodeURIComponent(
                srcParams.endDate,
-            )}&trip=${encodeURIComponent(srcParams.trip)}&state=${encodeURIComponent(srcParams.state)}`
+            )}&trip=${encodeURIComponent(srcParams.trip)}`
 
             router.push(url)
          } else {

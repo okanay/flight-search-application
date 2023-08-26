@@ -2,7 +2,7 @@
 
 import { useEffect } from 'react'
 import { usePathname, useRouter } from 'next/navigation'
-import { errorMessage } from '../../../../../libs/helpers/ValidateSearchParams'
+import { errorMessage } from '../../../../../libs/helpers/ValidateStateParams'
 import Link from 'next/link'
 
 type TProps = {
