@@ -7,6 +7,7 @@ import { PickerMenuLabel } from '@/components/UI/TicketSearchForm/PickerMenuLabe
 import { useRef, useState } from 'react'
 import useMenuOutsideCloseEffect from '@/custom-hooks/useMenuOutsideCloseEffect'
 import { FormattedDate } from '../../../../../libs/helpers/FormattedDate'
+import { caseEndDate, caseStartDate } from '../../../../../libs/helpers/TicketFinder'
 
 type TProps = {
    buttonName: TDateBtnName
@@ -17,10 +18,6 @@ type TProps = {
 }
 
 export const DatePicker = ({ buttonName, selectedDate, handleOnChangeCallBack, minDate, disabledBtn = false }: TProps) => {
-   // Check Readme File.
-   const minInitialDate = new Date('2023-08-25T00:00:00Z')
-   const maxInitialDate = new Date('2023-09-15T00:00:00Z')
-
    const [isOpen, setIsOpen] = useState(false)
 
    const handleOnChange = (value: Date) => handleOnChangeCallBack(value)
@@ -67,8 +64,8 @@ export const DatePicker = ({ buttonName, selectedDate, handleOnChangeCallBack, m
                   showNeighboringMonth={true}
                   showNavigation={true}
                   defaultValue={selectedDate}
-                  minDate={minDate !== undefined ? minDate : minInitialDate}
-                  maxDate={maxInitialDate}
+                  minDate={minDate !== undefined ? minDate : caseStartDate}
+                  maxDate={caseEndDate}
                   nextLabel={<NextLabel />}
                   next2Label={<Next2Label />}
                   prevLabel={<PrevLabel />}

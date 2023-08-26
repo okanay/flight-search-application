@@ -192,34 +192,55 @@ const AirportsMockData: TAirport[] = [
 const TicketMockData: TFlightTicket[] = [
    {
       ticketId: 1,
-      destinationStart: AirportsMockData[1],
+      destinationStart: AirportsMockData[0],
       destinationEnd: AirportsMockData[4],
       isoFlightDate: '2023-08-26T16:30:00+03:00', // 30 Ağustos 2023, saat 16:30
       ticketPrice: 1299,
    },
    {
       ticketId: 2,
+      destinationStart: AirportsMockData[0],
+      destinationEnd: AirportsMockData[4],
+      isoFlightDate: '2023-08-26T12:30:00+03:00', // 30 Ağustos 2023, saat 16:30
+      ticketPrice: 1499,
+   },
+   {
+      ticketId: 3,
       destinationStart: AirportsMockData[4],
-      destinationEnd: AirportsMockData[1],
+      destinationEnd: AirportsMockData[0],
       isoFlightDate: '2023-08-30T17:45:00+03:00', // 30 Ağustos 2023, saat 17:45
       ticketPrice: 1899,
    },
    {
-      ticketId: 3,
+      ticketId: 4,
+      destinationStart: AirportsMockData[4],
+      destinationEnd: AirportsMockData[0],
+      isoFlightDate: '2023-08-30T16:15:00+03:00', // 30 Ağustos 2023, saat 17:45
+      ticketPrice: 2199,
+   },
+   {
+      ticketId: 4,
+      destinationStart: AirportsMockData[4],
+      destinationEnd: AirportsMockData[5],
+      isoFlightDate: '2023-08-30T16:15:00+03:00', // 30 Ağustos 2023, saat 17:45
+      ticketPrice: 1699,
+   },
+   {
+      ticketId: 5,
       destinationStart: AirportsMockData[3],
       destinationEnd: AirportsMockData[7],
       isoFlightDate: '2023-08-27T13:30:00+03:00', // 27 Ağustos 2023, saat 13:30
       ticketPrice: 1399,
    },
    {
-      ticketId: 4,
+      ticketId: 6,
       destinationStart: AirportsMockData[7],
       destinationEnd: AirportsMockData[3],
       isoFlightDate: '2023-08-28T14:45:00+03:00', // 28 Ağustos 2023, saat 14:45
       ticketPrice: 1199,
    },
    {
-      ticketId: 4,
+      ticketId: 7,
       destinationStart: AirportsMockData[3], // Frankfurt
       destinationEnd: AirportsMockData[7], // Nice
       isoFlightDate: '2023-08-29T15:15:00+03:00', // 29 Ağustos 2023, saat 15:15

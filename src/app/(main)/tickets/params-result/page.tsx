@@ -1,5 +1,5 @@
 import { TFlightTicket } from '../../../../../libs/constants/MockData'
-import { IsTicketExist } from '../../../../../libs/helpers/IsTicketExist'
+import { TicketFinder } from '../../../../../libs/helpers/TicketFinder'
 import { FilteredTickets } from '@/components/(Main)/Tickets/FilteredTickets'
 import { ValidateSearchParams } from '../../../../../libs/helpers/ValidateStateParams'
 
@@ -23,8 +23,8 @@ export default async function ParamsResultPage({ params, searchParams }: TProps)
    const { startId, startDate, endId, endDate, trip, state } = searchParams
    ValidateSearchParams(searchParams)
 
-   const ticketsStart: TFlightTicket[] = IsTicketExist(Number(startId), startDate) || []
-   const ticketsEnd: TFlightTicket[] = IsTicketExist(Number(endId), endDate) || []
+   const ticketsStart: TFlightTicket[] = TicketFinder(Number(startId), Number(endId), startDate) || []
+   const ticketsEnd: TFlightTicket[] = TicketFinder(Number(endId), Number(startId), endDate) || []
 
    await new Promise(resolve => setTimeout(resolve, 500))
 

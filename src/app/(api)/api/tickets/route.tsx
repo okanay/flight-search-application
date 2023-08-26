@@ -1,7 +1,7 @@
 import { NextRequest, NextResponse } from 'next/server'
 import { TTicketSearchParams } from '../../../../../redux/slices/TicketSearchParamsSlice'
 import { TFlightTicket, TicketMockData } from '../../../../../libs/constants/MockData'
-import { IsTicketExist } from '../../../../../libs/helpers/IsTicketExist'
+import { TicketFinder } from '../../../../../libs/helpers/TicketFinder'
 import { ValidateStateParams } from '../../../../../libs/helpers/ValidateStateParams'
 
 export async function GET() {
@@ -19,8 +19,10 @@ export async function POST(req: NextRequest) {
    let endDestinationTickets: TFlightTicket[] = []
 
    if (searchParams?.airportStart?.id !== undefined && searchParams?.airportEnd?.id) {
-      startDestinationTickets = IsTicketExist(searchParams.airportStart.id, searchParams.isoDateStart) || []
-      endDestinationTickets = IsTicketExist(searchParams.airportEnd.id, searchParams.isoDateEnd) || []
+      startDestinationTickets =
+         TicketFinder(searchParams.airportStart.id, searchParams.airportEnd.id, searchParams.isoDateStart) || []
+      endDestinationTickets =
+         TicketFinder(searchParams.airportEnd.id, searchParams.airportStart.id, searchParams.isoDateEnd) || []
    }
 
    const data: TTicketFetchResponse = {
