@@ -1,6 +1,6 @@
-import { TTicketSearchParams } from '../../redux/slices/TicketSlice'
+import { TTicketSearchParams } from '../../redux/slices/TicketSearchParamsSlice'
 
-export const validateSearchParams = (searchParams: TTicketSearchParams): number | undefined => {
+export const ValidateSearchParams = (searchParams: TTicketSearchParams): number | undefined => {
    if (!searchParams.airportStart!) {
       return 600
    }
@@ -13,7 +13,7 @@ export const validateSearchParams = (searchParams: TTicketSearchParams): number 
       return 602
    }
 
-   if (!searchParams.isRoundTrip! && !searchParams.isoDateEnd!) {
+   if (searchParams.isRoundTrip! && !searchParams.isoDateEnd!) {
       return 603
    }
 
@@ -25,13 +25,13 @@ export const errorMessage = (status: number | string) => {
       case 404:
          return 'Formu eksik tamamladınız.'
       case 600:
-         return 'Kalkış lokasyonunu belirtmediniz.'
+         return 'Kalkış lokasyonunu eksik.'
       case 601:
-         return 'Varış lokasyonunu belirtmediniz.'
+         return 'Varış lokasyonunu eksik.'
       case 602:
-         return 'Gidiş tarihi belirtmediniz.'
+         return 'Gidiş tarihi eksik.'
       case 603:
-         return 'Dönüş tarihi belirtmediniz.'
+         return 'Dönüş tarihi eksik.'
       default:
          return 'Sunucuda hata meydana geldi.'
    }

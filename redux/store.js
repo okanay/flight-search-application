@@ -1,18 +1,22 @@
 import { combineReducers, configureStore } from '@reduxjs/toolkit'
-import TicketReducer from './slices/TicketSlice'
 import { persistReducer, persistStore } from 'redux-persist'
+
 import storage from 'redux-persist/lib/storage'
 import thunk from 'redux-thunk'
+
+import TicketSearchParamsReducer from './slices/TicketSearchParamsSlice'
+import TicketSearchFormErrorReducer from './slices/TicketSearchFormErrorSlice'
 
 const persistConfig = {
    key: 'root',
    storage,
-   whitelist: ['ticketSlice'],
-   blacklist: [],
+   whitelist: ['ticketSearchParamsSlice'],
+   blacklist: ['ticketSearchFormErrorSlice'],
 }
 
 const reducers = combineReducers({
-   ticketSlice: TicketReducer,
+   ticketSearchParamsSlice: TicketSearchParamsReducer,
+   ticketSearchFormErrorSlice: TicketSearchFormErrorReducer,
 })
 
 const persistedReducer = persistReducer(persistConfig, reducers)

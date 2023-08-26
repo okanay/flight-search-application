@@ -1,8 +1,8 @@
-import { TAirport, TCountry } from '../../../../libs/constants/MockData'
-import { TDestinationBtnName } from '../../../../libs/types/types'
+import { TAirport, TCountry } from '../../../../../libs/constants/MockData'
+import { TDestinationBtnName } from '../../../../../libs/types/types'
 import { Dispatch, RefObject, SetStateAction, useEffect, useRef, useState } from 'react'
 import useMenuOutsideCloseEffect from '@/custom-hooks/useMenuOutsideCloseEffect'
-import { PickerMenuContainer } from '@/components/UI/PickerMenuContainer'
+import { PickerMenuContainer } from '@/components/UI/TicketSearchForm/PickerMenuContainer'
 import { nanoid } from '@reduxjs/toolkit'
 
 type TProps = {

@@ -1,7 +1,7 @@
 'use client'
 import { TrashIcon } from '@heroicons/react/20/solid'
 import { useDispatch } from 'react-redux'
-import { clearFilter } from '../../../redux/slices/TicketSlice'
+import { clearFilter } from '../../../../redux/slices/TicketSearchParamsSlice'
 
 export const TicketFilterClear = () => {
    const dispatch = useDispatch()

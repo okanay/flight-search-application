@@ -1,12 +1,12 @@
-import { TDateBtnName } from '../../../../libs/types/types'
+import { TDateBtnName } from '../../../../../libs/types/types'
 import Calendar from 'react-calendar'
 import { tr } from 'date-fns/locale'
 import { format } from 'date-fns'
-import { Next2Label, NextLabel, Prev2Label, PrevLabel } from '@/components/UI/DatePickerLabels'
-import { PickerMenuContainer } from '@/components/UI/PickerMenuContainer'
+import { Next2Label, NextLabel, Prev2Label, PrevLabel } from '@/components/UI/TicketSearchForm/DatePickerLabels'
+import { PickerMenuContainer } from '@/components/UI/TicketSearchForm/PickerMenuContainer'
 import { useRef, useState } from 'react'
 import useMenuOutsideCloseEffect from '@/custom-hooks/useMenuOutsideCloseEffect'
-import { FormattedDate } from '../../../../libs/helpers/FormattedDate'
+import { FormattedDate } from '../../../../../libs/helpers/FormattedDate'
 
 type TProps = {
    buttonName: TDateBtnName

@@ -11,25 +11,21 @@ export type TTicketSearchParams = {
 }
 
 const initialState: TTicketSearchParams = {
-   isRoundTrip: false,
+   isRoundTrip: true,
    airportStart: undefined,
    airportEnd: undefined,
    isoDateStart: undefined,
    isoDateEnd: undefined,
 }
 
-export const TicketSlice = createSlice({
-   name: 'ticketSlice',
+export const TicketSearchParamsSlice = createSlice({
+   name: 'ticketSearchParamsSlice',
    initialState,
    reducers: {
       clearFilter: state => {
-         state.isRoundTrip = false
-         state.airportStart = undefined
-         state.airportEnd = undefined
-         state.isoDateStart = undefined
-         state.isoDateEnd = undefined
+         return initialState
       },
-      toggleIsOneWay: state => {
+      toggleIsRoundTrip: state => {
          state.isRoundTrip = !state.isRoundTrip
 
          if (state.isRoundTrip === true) {
@@ -52,12 +48,13 @@ export const TicketSlice = createSlice({
    },
 })
 
-export const getTicketData = (state: any) => state.ticketSlice
-export const getIsRoundTrip = (state: any) => state.ticketSlice.isRoundTrip
-export const getAirportStart = (state: any) => state.ticketSlice.airportStart
-export const getAirportEnd = (state: any) => state.ticketSlice.airportEnd
-export const getIsoDateStart = (state: any) => state.ticketSlice.isoDateStart
-export const getIsoDateEnd = (state: any) => state.ticketSlice.isoDateEnd
+export const getTicketSearchParams = (state: any) => state.ticketSearchParamsSlice
+export const getIsRoundTrip = (state: any) => state.ticketSearchParamsSlice.isRoundTrip
+export const getAirportStart = (state: any) => state.ticketSearchParamsSlice.airportStart
+export const getAirportEnd = (state: any) => state.ticketSearchParamsSlice.airportEnd
+export const getIsoDateStart = (state: any) => state.ticketSearchParamsSlice.isoDateStart
+export const getIsoDateEnd = (state: any) => state.ticketSearchParamsSlice.isoDateEnd
 
-export const { clearFilter, toggleIsOneWay, setAirportStart, setAirportEnd, setDateStart, setDateEnd } = TicketSlice.actions
-export default TicketSlice.reducer
+export const { clearFilter, toggleIsRoundTrip, setAirportStart, setAirportEnd, setDateStart, setDateEnd } =
+   TicketSearchParamsSlice.actions
+export default TicketSearchParamsSlice.reducer

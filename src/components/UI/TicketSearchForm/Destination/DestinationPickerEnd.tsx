@@ -1,11 +1,16 @@
 'use client'
 
-import { AirportsMockData, CountriesMockData, TAirport, TCountry } from '../../../../libs/constants/MockData'
-import { DestinationPicker } from '@/components/UI/Destination/DestinationPicker'
+import { AirportsMockData, CountriesMockData, TAirport, TCountry } from '../../../../../libs/constants/MockData'
+import { DestinationPicker } from '@/components/UI/TicketSearchForm/Destination/DestinationPicker'
 import { useEffect, useRef, useState } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
-import { getAirportEnd, getAirportStart, setAirportEnd, setAirportStart } from '../../../../redux/slices/TicketSlice'
-import { DestinationFilter } from '../../../../libs/helpers/DestinationFilter'
+import {
+   getAirportEnd,
+   getAirportStart,
+   setAirportEnd,
+   setAirportStart,
+} from '../../../../../redux/slices/TicketSearchParamsSlice'
+import { DestinationFilter } from '../../../../../libs/helpers/DestinationFilter'
 
 export const DestinationPickerEnd = () => {
    const [selectedCountry, setSelectedCountry] = useState<TCountry | undefined>()

@@ -1,15 +1,12 @@
-import { PaperAirplaneIcon, TrashIcon } from '@heroicons/react/20/solid'
-
-import { nanoid } from '@reduxjs/toolkit'
-
-import { DestinationPickerStart } from '@/components/UI/Destination/DestinationPickerStart'
-import { DestinationPickerEnd } from '@/components/UI/Destination/DestinationPickerEnd'
-import { DatePickerStart } from '@/components/UI/Date/DatePickerStart'
-import { DatePickerEnd } from '@/components/UI/Date/DatePickerEnd'
-import { IsRoundTripToggleButton } from '@/components/UI/ToggleButton/IsRoundTripToggleButton'
-import { TicketFilterClear } from '@/components/UI/TicketFilterClear'
-import { TicketSearchButton } from '@/components/UI/ToggleButton/TicketSearchButton'
+import { DestinationPickerStart } from '@/components/UI/TicketSearchForm/Destination/DestinationPickerStart'
+import { DestinationPickerEnd } from '@/components/UI/TicketSearchForm/Destination/DestinationPickerEnd'
+import { DatePickerStart } from '@/components/UI/TicketSearchForm/Date/DatePickerStart'
+import { DatePickerEnd } from '@/components/UI/TicketSearchForm/Date/DatePickerEnd'
+import { IsRoundTripToggleButton } from '@/components/UI/TicketSearchForm/IsRoundTripToggleButton'
+import { TicketFilterClear } from '@/components/UI/TicketSearchForm/TicketFilterClear'
+import { TicketSearchButton } from '@/components/UI/TicketSearchForm/TicketSearchButton'
 import Link from 'next/link'
+import { TicketErrorHandle } from '@/components/UI/TicketSearchForm/TicketErrorHandle'
 
 export const TicketSearchForm = () => {
    return (
@@ -36,6 +33,8 @@ export const TicketSearchForm = () => {
                BÜTÜN BİLETLER
             </Link>
          </div>
+
+         <TicketErrorHandle />
       </form>
    )
 }

@@ -1,8 +1,8 @@
 'use client'
 
-import { DatePicker } from '@/components/UI/Date/DatePicker'
+import { DatePicker } from '@/components/UI/TicketSearchForm/Date/DatePicker'
 import { useDispatch, useSelector } from 'react-redux'
-import { getIsoDateEnd, getIsoDateStart, getIsRoundTrip, setDateEnd } from '../../../../redux/slices/TicketSlice'
+import { getIsoDateEnd, getIsoDateStart, getIsRoundTrip, setDateEnd } from '../../../../../redux/slices/TicketSearchParamsSlice'
 
 type TProps = {}
 
@@ -21,9 +21,9 @@ export const DatePickerEnd = ({}: TProps) => {
 
    return (
       <DatePicker
-         buttonName={!isRoundTrip ? 'Dönüş Tarihi' : 'Tek Yön'}
+         buttonName={isRoundTrip ? 'Dönüş Tarihi' : 'Tek Yön'}
          selectedDate={date}
-         disabledBtn={isRoundTrip}
+         disabledBtn={!isRoundTrip}
          handleOnChangeCallBack={handleDateOnChange}
          minDate={minDate}
       />

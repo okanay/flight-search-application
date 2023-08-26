@@ -1,8 +1,8 @@
 import { NextRequest, NextResponse } from 'next/server'
-import { TTicketSearchParams } from '../../../../../redux/slices/TicketSlice'
+import { TTicketSearchParams } from '../../../../../redux/slices/TicketSearchParamsSlice'
 import { TFlightTicket, TicketMockData } from '../../../../../libs/constants/MockData'
 import { IsTicketExist } from '../../../../../libs/helpers/IsTicketExist'
-import { validateSearchParams } from '../../../../../libs/helpers/ValidateSearchParams'
+import { ValidateSearchParams } from '../../../../../libs/helpers/ValidateSearchParams'
 
 export async function GET() {
    const data = [...TicketMockData]
@@ -12,7 +12,7 @@ export async function GET() {
 export async function POST(req: NextRequest) {
    const searchParams: TTicketSearchParams = await req.json()
 
-   const isValid: number | undefined = validateSearchParams(searchParams)
+   const isValid: number | undefined = ValidateSearchParams(searchParams)
    if (isValid !== undefined) return NextResponse.json({ error: '' }, { status: isValid as number })
 
    let startDestinationTickets: TFlightTicket[] = []

@@ -1,8 +1,8 @@
 'use client'
 
-import { DatePicker } from '@/components/UI/Date/DatePicker'
+import { DatePicker } from '@/components/UI/TicketSearchForm/Date/DatePicker'
 import { useDispatch, useSelector } from 'react-redux'
-import { getIsoDateStart, setDateStart } from '../../../../redux/slices/TicketSlice'
+import { getIsoDateStart, setDateStart } from '../../../../../redux/slices/TicketSearchParamsSlice'
 
 type TProps = {}
 

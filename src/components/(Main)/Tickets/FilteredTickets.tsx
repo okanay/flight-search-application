@@ -6,7 +6,7 @@ import { TFetchError } from '../../../../libs/types/types'
 
 import { CalendarIcon, CurrencyDollarIcon, FlagIcon } from '@heroicons/react/20/solid'
 
-import { FilterButton } from '@/components/UI/FilterButton'
+import { FilterButton } from '@/components/UI/TicketSearchResult/FilterButton'
 import { TicketList } from '@/components/(Main)/Tickets/TicketList'
 
 type TProps = {

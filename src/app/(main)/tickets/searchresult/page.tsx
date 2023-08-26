@@ -1,23 +1,25 @@
 'use client'
 
-import { getTicketData, TTicketSearchParams } from '../../../../../redux/slices/TicketSlice'
-import { useQuery } from '@tanstack/react-query'
-import { FilteredTickets } from '@/components/(Main)/Tickets/FilteredTickets'
-import { useSelector } from 'react-redux'
 import { Dispatch, SetStateAction, useState } from 'react'
 import { TFetchError } from '../../../../../libs/types/types'
 import { TTicketFetchResponse } from '@/app/(api)/api/tickets/route'
+import { TTicketSearchParams, getTicketSearchParams } from '../../../../../redux/slices/TicketSearchParamsSlice'
+import { useQuery } from '@tanstack/react-query'
+import { FilteredTickets } from '@/components/(Main)/Tickets/FilteredTickets'
 import { TicketListError } from '@/components/(Main)/Tickets/TicketListError'
 import { TicketListLoading } from '@/components/(Main)/Tickets/TicketListLoading'
-import { validateSearchParams } from '../../../../../libs/helpers/ValidateSearchParams'
+import { ValidateSearchParams } from '../../../../../libs/helpers/ValidateSearchParams'
+
+import { useSelector } from 'react-redux'
 
 export default function SearchResultPage() {
-   const searchParams: TTicketSearchParams = useSelector(getTicketData)
+   const searchParams: TTicketSearchParams = useSelector(getTicketSearchParams)
 
    const [error, setError] = useState<TFetchError>({
       isError: false,
       status: 200,
    })
+
    const { isLoading, data: searchResult } = useQuery<TTicketFetchResponse>({
       cacheTime: 0,
       queryKey: ['search result'],
@@ -27,17 +29,14 @@ export default function SearchResultPage() {
       },
    })
 
-   if (error.isError) return <TicketListError error={error} />
-
-   if (isLoading)
-      return (
-         <>
-            <TicketListLoading maxSkeletonCount={2} />
-            {searchParams.isRoundTrip && <TicketListLoading maxSkeletonCount={2} />}
-         </>
-      )
-
-   return (
+   return error.isError ? (
+      <TicketListError error={error} />
+   ) : isLoading ? (
+      <>
+         <TicketListLoading maxSkeletonCount={2} />
+         {searchParams.isRoundTrip && <TicketListLoading maxSkeletonCount={2} />}
+      </>
+   ) : (
       <>
          <FilteredTickets
             tickets={searchResult?.startDestinationTickets?.tickets || []}
@@ -47,7 +46,7 @@ export default function SearchResultPage() {
             ok={searchResult?.startDestinationTickets?.ok || true}
          />
 
-         {!searchParams.isRoundTrip && (
+         {searchParams.isRoundTrip && (
             <FilteredTickets
                tickets={searchResult?.endDestinationTickets?.tickets || []}
                listName={'Dönüş Biletleri'}
@@ -63,7 +62,7 @@ export default function SearchResultPage() {
 const TicketSearchFetchPost = async (searchParams: TTicketSearchParams, setError: Dispatch<SetStateAction<TFetchError>>) => {
    await new Promise(resolve => setTimeout(resolve, 750))
 
-   const isValid = validateSearchParams(searchParams)
+   const isValid = ValidateSearchParams(searchParams)
    if (isValid !== undefined) return setError({ isError: true, status: isValid })
 
    try {

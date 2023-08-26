@@ -2,18 +2,18 @@
 
 import { motion } from 'framer-motion'
 import { useDispatch, useSelector } from 'react-redux'
-import { getIsRoundTrip, toggleIsOneWay } from '../../../../redux/slices/TicketSlice'
+import { getIsRoundTrip, toggleIsRoundTrip } from '../../../../redux/slices/TicketSearchParamsSlice'
 
 const selectableTab = [
    {
       id: 0,
       name: 'Gidiş Dönüş',
-      active: false,
+      active: true,
    },
    {
       id: 1,
       name: 'Tek Yön',
-      active: true,
+      active: false,
    },
 ]
 
@@ -22,7 +22,7 @@ export const IsRoundTripToggleButton = () => {
    const isRoundTrip = useSelector(getIsRoundTrip)
 
    return (
-      <button type={'button'} onClick={() => dispatch(toggleIsOneWay())} className={'group flex flex-col'}>
+      <button type={'button'} onClick={() => dispatch(toggleIsRoundTrip())} className={'group flex flex-col'}>
          <div className="group flex flex-row justify-between gap-4 rounded-lg border border-slate-200 bg-gradient-to-tr from-slate-200 to-slate-100 px-2 py-2 font-openSans shadow shadow-slate-200">
             {selectableTab.map(item => (
                <div
