@@ -1,4 +1,5 @@
 import { TicketSearchForm } from '@/components/(Main)/Index/TicketSearchForm'
+import { Footer } from '@/components/(Main)/Footer/Footer'
 
 function RootPage() {
    return (
