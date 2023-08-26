@@ -9,7 +9,7 @@ export default function ParamsLoading() {
 
    return (
       <>
-         <TicketListLoading maxSkeletonCount={isTrip ? 2 : 5} />
+         <TicketListLoading maxSkeletonCount={isTrip ? 2 : 4} />
          {isTrip && <TicketListLoading maxSkeletonCount={2} />}
       </>
    )

@@ -5,11 +5,11 @@ export function DestinationFilter(
    selectedCountry: TCountry | undefined,
    searchInput: string | null | undefined,
 ): TAirport[] {
-   const withSelectedCountry: TAirport[] = withoutAirport.filter(a => {
+   const withSelectedCountry: TAirport[] = withoutAirport.filter(airport => {
       if (selectedCountry !== undefined) {
-         if (a.countryId === selectedCountry.id) return a
+         if (airport.countryId === selectedCountry.id) return airport
       } else {
-         return a
+         return airport
       }
    })
 
@@ -18,13 +18,13 @@ export function DestinationFilter(
          //
          const searchInputCleaned = searchInput.toLocaleLowerCase('tr-TR')
          //
-         return withoutAirport.filter(a => {
+         return withoutAirport.filter(airport => {
             return (
-               a.name.toLocaleLowerCase('tr-TR').includes(searchInputCleaned) ||
-               a.continent.toLocaleLowerCase('tr-TR').includes(searchInputCleaned) ||
-               a.city.toLocaleLowerCase('tr-TR').includes(searchInputCleaned) ||
-               a.countryName.toLocaleLowerCase('tr-TR').includes(searchInputCleaned) ||
-               a.code.toLocaleLowerCase('tr-TR').includes(searchInputCleaned)
+               airport.name.toLocaleLowerCase('tr-TR').includes(searchInputCleaned) ||
+               airport.continent.toLocaleLowerCase('tr-TR').includes(searchInputCleaned) ||
+               airport.city.toLocaleLowerCase('tr-TR').includes(searchInputCleaned) ||
+               airport.countryName.toLocaleLowerCase('tr-TR').includes(searchInputCleaned) ||
+               airport.code.toLocaleLowerCase('tr-TR').includes(searchInputCleaned)
             )
          })
          //

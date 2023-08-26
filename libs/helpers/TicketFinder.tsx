@@ -24,4 +24,4 @@ export const TicketFinder = (destinationStartId: number, destinationEndId: numbe
 }
 
 export const caseStartDate = new Date('2023-08-25T00:00:00Z')
-export const caseEndDate = new Date('2023-09-15T00:00:00Z')
+export const caseEndDate = new Date('2023-09-03T00:00:00Z')

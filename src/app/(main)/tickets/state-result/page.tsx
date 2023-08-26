@@ -11,7 +11,6 @@ import { TicketListLoading } from '@/components/(Main)/Tickets/TicketListLoading
 import { ValidateStateParams } from '../../../../../libs/helpers/ValidateStateParams'
 
 import { useSelector } from 'react-redux'
-import { usePathname, useRouter, useSearchParams } from 'next/navigation'
 
 export default function SearchResultPage() {
    const [error, setError] = useState<TFetchError>({
@@ -20,7 +19,7 @@ export default function SearchResultPage() {
    })
    const formParams: TTicketSearchParams = useSelector(getTicketSearchParams)
 
-   const { isLoading, data: searchResult } = useQuery<TTicketFetchResponse>({
+   const { isLoading, data: ticketResponse } = useQuery<TTicketFetchResponse>({
       cacheTime: 0,
       queryKey: ['search result'],
       retry: 0,
@@ -38,17 +37,17 @@ export default function SearchResultPage() {
       </>
    ) : (
       <>
-         <FilteredTickets tickets={searchResult?.startDestinationTickets?.tickets || []} listName={'Gidiş Biletleri'} />
+         <FilteredTickets tickets={ticketResponse?.startDestinationTickets?.tickets || []} listName={'Gidiş Biletleri'} />
 
          {formParams.isRoundTrip && (
-            <FilteredTickets tickets={searchResult?.endDestinationTickets?.tickets || []} listName={'Dönüş Biletleri'} />
+            <FilteredTickets tickets={ticketResponse?.endDestinationTickets?.tickets || []} listName={'Dönüş Biletleri'} />
          )}
       </>
    )
 }
 
 const TicketSearchFetchPost = async (searchParams: TTicketSearchParams, setError: Dispatch<SetStateAction<TFetchError>>) => {
-   await new Promise(resolve => setTimeout(resolve, 750))
+   await new Promise(resolve => setTimeout(resolve, 1000))
 
    const isValid = ValidateStateParams(searchParams)
    if (isValid !== undefined) return setError({ isError: true, status: isValid })

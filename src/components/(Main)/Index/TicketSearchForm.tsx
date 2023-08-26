@@ -5,9 +5,9 @@ import { DatePickerEnd } from '@/components/UI/TicketSearchForm/Date/DatePickerE
 import { TicketFormTripTypeToggle } from '@/components/UI/TicketSearchForm/TicketFormTripTypeToggle'
 import { TicketFormClearHandle } from '@/components/UI/TicketSearchForm/TicketFormClearHandle'
 import { TicketFormSearchHandle } from '@/components/UI/TicketSearchForm/TicketFormSearchHandle'
-import Link from 'next/link'
 import { TicketFormErrorHandle } from '@/components/UI/TicketSearchForm/TicketFormErrorHandle'
 import { TicketFormSearchTypeToggle } from '@/components/UI/TicketSearchForm/TicketFormSearchTypeToggle'
+import Link from 'next/link'
 
 export const TicketSearchForm = () => {
    return (

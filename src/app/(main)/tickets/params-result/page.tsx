@@ -26,7 +26,7 @@ export default async function ParamsResultPage({ params, searchParams }: TProps)
    const ticketsStart: TFlightTicket[] = TicketFinder(Number(startId), Number(endId), startDate) || []
    const ticketsEnd: TFlightTicket[] = TicketFinder(Number(endId), Number(startId), endDate) || []
 
-   await new Promise(resolve => setTimeout(resolve, 500))
+   await new Promise(resolve => setTimeout(resolve, 1000))
 
    return (
       <>

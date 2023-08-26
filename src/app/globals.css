@@ -1,13 +1,5 @@
-@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;800&display=swap');
-@import url('https://fonts.googleapis.com/css2?family=Radio+Canada:wght@300;400;500;600&display=swap');
-@import url('https://fonts.googleapis.com/css2?family=Inconsolata:wght@400;600&display=swap');
-@import url('https://fonts.googleapis.com/css2?family=Figtree:wght@300;400;500;600;700;800;900&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=IBM+Plex+Serif:wght@100;200;300;400;500;600;700&display=swap');
-@import url('https://fonts.googleapis.com/css2?family=Spline+Sans:wght@300;400;500;600;700&display=swap');
-@import url('https://fonts.googleapis.com/css2?family=Gloock&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=Open+Sans:wght@300;400;500;600;700;800&display=swap');
-@import url('https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&display=swap');
-@import url('https://fonts.googleapis.com/css2?family=Jost:wght@100;200;300;400;500;600&display=swap');
 
 @tailwind base;
 @tailwind components;
@@ -20,19 +12,6 @@
 }
 
 :root {
-
-   /*--theme-50: 253 ,243 ,244;*/
-   /*--theme-100: 251 ,232 ,235;*/
-   /*--theme-200: 246 ,213 ,218;*/
-   /*--theme-300: 234 ,157 ,170;*/
-   /*--theme-400: 229 ,135 ,153;*/
-   /*--theme-500: 215 ,92 ,119;*/
-   /*--theme-600: 193 ,61 ,96;*/
-   /*--theme-700: 162 ,46 ,79;*/
-   /*--theme-800: 136 ,41 ,71;*/
-   /*--theme-900: 117 ,38 ,66;*/
-   /*--theme-950: 65 ,16 ,32;*/
-
    --theme-50: 254 ,242 ,243;
    --theme-100: 253 ,230 ,233;
    --theme-200: 250 ,209 ,215;
@@ -44,18 +23,6 @@
    --theme-800: 148 ,29 ,65;
    --theme-900: 127 ,28 ,61;
    --theme-950: 71 ,10 ,29;
-
-   /*--theme-50: 254, 248,236;*/
-   /*--theme-100: 250, 234,203;*/
-   /*--theme-200: 245, 211,146;*/
-   /*--theme-300: 240, 184,89;*/
-   /*--theme-400: 238, 167,68;*/
-   /*--theme-500: 229, 126,27;*/
-   /*--theme-600: 203, 93,20;*/
-   /*--theme-700: 168, 65,21;*/
-   /*--theme-800: 137, 50,23;*/
-   /*--theme-900: 113, 42,22;*/
-   /*--theme-950: 65, 19,7;*/
 }
 
 .skeleton-nav-item {
@@ -67,8 +34,11 @@
 }
 
 .h-screen-custom {
-   height: 100vh;
    height: 100dvh;
+}
+
+.h-screen-custom {
+   height: 100vh;
 }
 
 .react-calendar {
