@@ -3,7 +3,7 @@ import { Footer } from '@/components/(Main)/Footer/Footer'
 
 function RootPage() {
    return (
-      <main className={'mx-auto mt-20 max-w-7xl px-4'}>
+      <main className={'mx-auto mt-28 max-w-7xl px-4'}>
          <TicketSearchForm />
       </main>
    )

@@ -85,7 +85,7 @@ export const FilteredTickets = ({ tickets, listName }: TProps) => {
          {filteredTickets.length > 0 ? (
             <div
                className={
-                  'mb-2 flex max-w-[160px] flex-row flex-wrap items-center justify-center gap-4 rounded-lg border border-slate-200 px-4 py-2 smTablet:max-w-full'
+                  'mb-2 grid w-full grid-cols-[repeat(auto-fill,minmax(80px,12fr))] items-center justify-start gap-4 overflow-hidden rounded-lg border border-slate-200 px-4 py-2'
                }>
                <FilterButton
                   buttonName={'Tarih'}
