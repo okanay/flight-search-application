@@ -1,5 +1,5 @@
 import { createSlice } from '@reduxjs/toolkit'
-import { errorMessage } from '../../libs/helpers/ValidateStateParams'
+import { ErrorMessageHandle } from '../../libs/helpers/ValidateStateParams'
 import exp from 'constants'
 
 export type TTicketSearchFormError = {
@@ -23,7 +23,7 @@ export const TicketSearchFormErrorSlice = createSlice({
       },
       setError: (state, action: { payload: number }) => {
          state.status = action.payload
-         state.message = errorMessage(action.payload)
+         state.message = ErrorMessageHandle(action.payload)
          state.isError = true
       },
    },

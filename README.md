@@ -12,14 +12,21 @@ const minInitialDate = new Date('2023-08-25T00:00:00Z')
 const maxInitialDate = new Date('2023-09-15T00:00:00Z')
 ```
 
-### **Search Best Result**
 
+### **Destination Picker**
 ![Destination Picker](./screenshots/destination.png)
-
+### **Date Picker**
 ![Date Picker](./screenshots/datepicker.png)
-
+### **Recomended Params**
 ![Recommended Params](./screenshots/recommendedparams.png)
-
+### **Result**
 ![Best Result](./screenshots/result.png)
+### **Search Type**
+#### **This toggle sets the search concept. If the button stays as "URL", you can search for tickets by creating searchParams.**
 
+![Search Type](./screenshots/searchType.png)
+### **Loading Skeleton**
+![Search Type](./screenshots/skeleton.png)
+### **Error**
+![Error](./screenshots/error.png)
 

@@ -50,14 +50,14 @@ export function ValidateSearchParams(searchParams: TValidationSearchParams) {
    }
 }
 
-export const errorMessage = (status: number | string) => {
+export const ErrorMessageHandle = (status: number | string) => {
    switch (Number(status)) {
       case 404:
          return 'Formu eksik tamamladınız.'
       case 600:
-         return 'Kalkış lokasyonunu eksik.'
+         return 'Kalkış lokasyonu eksik.'
       case 601:
-         return 'Varış lokasyonunu eksik.'
+         return 'Varış lokasyonu eksik.'
       case 602:
          return 'Gidiş tarihi eksik.'
       case 603:

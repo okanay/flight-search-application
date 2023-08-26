@@ -191,95 +191,39 @@ const AirportsMockData: TAirport[] = [
 
 const TicketMockData: TFlightTicket[] = [
    {
-      ticketId: 5,
-      destinationStart: AirportsMockData[11], // New York
-      destinationEnd: AirportsMockData[12], // Los Angeles
-      isoFlightDate: '2023-08-30T16:30:00+03:00', // 30 Ağustos 2023, saat 16:30
-      ticketPrice: 1142,
-   },
-   {
-      ticketId: 6,
-      destinationStart: AirportsMockData[14], // Toronto
-      destinationEnd: AirportsMockData[1], // İstanbul Sabiha Gökçen
-      isoFlightDate: '2023-08-31T17:45:00+03:00', // 31 Ağustos 2023, saat 17:45
-      ticketPrice: 1449,
-   },
-   {
-      ticketId: 2,
-      destinationStart: AirportsMockData[2], // Antalya
-      destinationEnd: AirportsMockData[6], // Bodrum
-      isoFlightDate: '2023-08-27T13:30:00+03:00', // 27 Ağustos 2023, saat 13:30
-      ticketPrice: 1399,
-   },
-   {
-      ticketId: 3,
-      destinationStart: AirportsMockData[5], // Dalaman
-      destinationEnd: AirportsMockData[9], // Paris
-      isoFlightDate: '2023-08-28T14:45:00+03:00', // 28 Ağustos 2023, saat 14:45
-      ticketPrice: 899,
-   },
-   {
-      ticketId: 4,
-      destinationStart: AirportsMockData[7], // Frankfurt
-      destinationEnd: AirportsMockData[10], // Nice
-      isoFlightDate: '2023-08-29T15:15:00+03:00', // 29 Ağustos 2023, saat 15:15
-      ticketPrice: 1764,
-   },
-   {
       ticketId: 1,
-      destinationStart: AirportsMockData[0], // İstanbul Havalimanı
-      destinationEnd: AirportsMockData[3], // İzmir
-      isoFlightDate: '2023-08-26T12:00:00+03:00', // 26 Ağustos 2023, saat 12:00
-      ticketPrice: 1699,
-   },
-   {
-      ticketId: 7,
-      destinationStart: AirportsMockData[0], // İstanbul Havalimanı
-      destinationEnd: AirportsMockData[3], // İzmir
-      isoFlightDate: '2023-08-26T11:00:00+03:00', // 26 Ağustos 2023, saat 12:00
-      ticketPrice: 1940,
-   },
-   {
-      ticketId: 8,
-      destinationStart: AirportsMockData[3], // İstanbul Havalimanı
-      destinationEnd: AirportsMockData[0], // İzmir
-      isoFlightDate: '2023-08-28T11:00:00+03:00', // 26 Ağustos 2023, saat 12:00
-      ticketPrice: 1940,
-   },
-   {
-      ticketId: 9,
-      destinationStart: AirportsMockData[2], // Antalya
-      destinationEnd: AirportsMockData[6], // Bodrum
-      isoFlightDate: '2023-08-27T13:30:00+03:00', // 27 Ağustos 2023, saat 13:30
-      ticketPrice: 1399,
-   },
-   {
-      ticketId: 10,
-      destinationStart: AirportsMockData[9], // Dalaman
-      destinationEnd: AirportsMockData[5], // Paris
-      isoFlightDate: '2023-08-30T17:15:00+03:00', // 28 Ağustos 2023, saat 14:45
+      destinationStart: AirportsMockData[1],
+      destinationEnd: AirportsMockData[4],
+      isoFlightDate: '2023-08-26T16:30:00+03:00', // 30 Ağustos 2023, saat 16:30
       ticketPrice: 1299,
    },
    {
-      ticketId: 11,
-      destinationStart: AirportsMockData[2], // Antalya
-      destinationEnd: AirportsMockData[6], // Bodrum
+      ticketId: 2,
+      destinationStart: AirportsMockData[4],
+      destinationEnd: AirportsMockData[1],
+      isoFlightDate: '2023-08-30T17:45:00+03:00', // 30 Ağustos 2023, saat 17:45
+      ticketPrice: 1899,
+   },
+   {
+      ticketId: 3,
+      destinationStart: AirportsMockData[3],
+      destinationEnd: AirportsMockData[7],
       isoFlightDate: '2023-08-27T13:30:00+03:00', // 27 Ağustos 2023, saat 13:30
       ticketPrice: 1399,
    },
    {
-      ticketId: 12,
-      destinationStart: AirportsMockData[5], // Dalaman
-      destinationEnd: AirportsMockData[9], // Paris
-      isoFlightDate: '2023-08-28T12:45:00+03:00', // 28 Ağustos 2023, saat 14:45
-      ticketPrice: 1099,
+      ticketId: 4,
+      destinationStart: AirportsMockData[7],
+      destinationEnd: AirportsMockData[3],
+      isoFlightDate: '2023-08-28T14:45:00+03:00', // 28 Ağustos 2023, saat 14:45
+      ticketPrice: 1199,
    },
    {
-      ticketId: 13,
-      destinationStart: AirportsMockData[10], // Frankfurt
+      ticketId: 4,
+      destinationStart: AirportsMockData[3], // Frankfurt
       destinationEnd: AirportsMockData[7], // Nice
-      isoFlightDate: '2023-08-30T14:45:00+03:00', // 29 Ağustos 2023, saat 15:15
-      ticketPrice: 2024,
+      isoFlightDate: '2023-08-29T15:15:00+03:00', // 29 Ağustos 2023, saat 15:15
+      ticketPrice: 1699,
    },
 ]
 
