@@ -61,6 +61,9 @@ export const DatePicker = ({ buttonName, selectedDate, handleOnChangeCallBack, m
                   view={'month'}
                   locale={'tr'}
                   onChange={handleOnChange as any}
+                  onClickDay={() => {
+                     setIsOpen(false)
+                  }}
                   showNeighboringMonth={true}
                   showNavigation={true}
                   defaultValue={selectedDate}

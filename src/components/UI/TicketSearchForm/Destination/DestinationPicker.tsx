@@ -31,9 +31,19 @@ export const DestinationPicker = ({
    searchInputOnChange,
 }: TProps) => {
    const [isOpen, setIsOpen] = useState(false)
-
    const buttonRef = useRef<HTMLButtonElement>(null)
    const menuRef = useRef<HTMLDivElement>(null)
+
+   const handleDestinationChange = (airportData: TAirport) => {
+      setIsOpen(false)
+      handleAirportDestinationChange(airportData)
+   }
+
+   const handleSetCountry = (c: TCountry) => {
+      if (selectedCountry?.name === c.name) return setSelectedCountry(undefined)
+
+      setSelectedCountry(c)
+   }
 
    const handleMenuToggle = () => setIsOpen(prev => !prev)
 
@@ -44,12 +54,7 @@ export const DestinationPicker = ({
          setSearchInput('')
       }
    }, [isOpen, setSearchInput])
-
-   const handleSetCountry = (c: TCountry) => {
-      if (selectedCountry?.name === c.name) return setSelectedCountry(undefined)
-
-      setSelectedCountry(c)
-   }
+   //
    return (
       <div className={`relative flex w-fit flex-col items-start`}>
          <button
@@ -99,7 +104,9 @@ export const DestinationPicker = ({
                               <button
                                  type={'button'}
                                  key={nanoid()}
-                                 onClick={() => handleAirportDestinationChange(a)}
+                                 onClick={() => {
+                                    handleDestinationChange(a)
+                                 }}
                                  className={`relative flex w-full flex-col px-2 text-start transition-all duration-300 ${
                                     selectedDestination?.name === a.name
                                        ? 'bg-gradient-to-r from-primary-400 to-primary-300 text-slate-50 hover:opacity-80'
