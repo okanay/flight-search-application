@@ -2,34 +2,33 @@
 
 import { Dispatch, SetStateAction, useState } from 'react'
 import { TFlightTicket } from '../../../../libs/constants/MockData'
-import { TFetchError } from '../../../../libs/types/types'
 
-import { CalendarIcon, CurrencyDollarIcon, FlagIcon } from '@heroicons/react/20/solid'
+import { CalendarIcon, CurrencyDollarIcon, FlagIcon, MapPinIcon } from '@heroicons/react/20/solid'
 
 import { FilterButton } from '@/components/UI/TicketSearchResult/FilterButton'
-import { TicketList } from '@/components/(Main)/Tickets/TicketList'
+import { TicketList, TTicketListName } from '@/components/(Main)/Tickets/TicketList'
 
 type TProps = {
    tickets: TFlightTicket[]
-   listName: string
-   loading?: boolean
-   error?: TFetchError
-   ok?: boolean
+   listName: TTicketListName
 }
 
-type TFilterNames = 'orderByPrice' | 'orderByDate' | 'orderByFlag' | 'orderByCity'
+export type TFilterStateName = '' | 'asc' | 'desc'
 
-export const FilteredTickets = ({ tickets, listName, error, loading = false, ok = true }: TProps) => {
-   const [orderByPrice, setOrderByPrice] = useState('')
-   const [orderByDate, setOrderByDate] = useState('')
-   const [orderByFlag, setOrderByFlag] = useState('')
+export type TFilterNames = 'orderByPrice' | 'orderByDate' | 'orderByFlag' | 'orderByCity'
+
+export const FilteredTickets = ({ tickets, listName }: TProps) => {
+   const [orderByPrice, setOrderByPrice] = useState<TFilterStateName>('')
+   const [orderByDate, setOrderByDate] = useState<TFilterStateName>('')
+   const [orderByFlag, setOrderByFlag] = useState<TFilterStateName>('')
+   const [orderByCity, setOrderByCity] = useState<TFilterStateName>('')
 
    let filteredTickets: TFlightTicket[] = [...tickets]
 
    if (orderByPrice === 'asc') {
-      filteredTickets.sort((a, b) => b.ticketPrice - a.ticketPrice)
-   } else if (orderByPrice === 'desc') {
       filteredTickets.sort((a, b) => a.ticketPrice - b.ticketPrice)
+   } else if (orderByPrice === 'desc') {
+      filteredTickets.sort((a, b) => b.ticketPrice - a.ticketPrice)
    }
 
    if (orderByDate === 'asc') {
@@ -44,6 +43,12 @@ export const FilteredTickets = ({ tickets, listName, error, loading = false, ok 
       filteredTickets.sort((a, b) => b.destinationStart.countryName.localeCompare(a.destinationStart.countryName))
    }
 
+   if (orderByCity === 'asc') {
+      filteredTickets.sort((a, b) => a.destinationStart.city.localeCompare(b.destinationStart.city))
+   } else if (orderByCity === 'desc') {
+      filteredTickets.sort((a, b) => b.destinationStart.city.localeCompare(a.destinationStart.city))
+   }
+
    const resetOtherFilters = (currentFilter: TFilterNames) => {
       if (currentFilter !== 'orderByPrice') {
          setOrderByPrice('')
@@ -54,9 +59,16 @@ export const FilteredTickets = ({ tickets, listName, error, loading = false, ok 
       if (currentFilter !== 'orderByFlag') {
          setOrderByFlag('')
       }
+      if (currentFilter !== 'orderByCity') {
+         setOrderByCity('')
+      }
    }
 
-   const handleSortChange = (filterName: TFilterNames, state: string, setState: Dispatch<SetStateAction<string>>) => {
+   const handleSortChange = (
+      filterName: TFilterNames,
+      state: TFilterStateName,
+      setState: Dispatch<SetStateAction<TFilterStateName>>,
+   ) => {
       resetOtherFilters(filterName)
 
       if (state === '') {
@@ -71,10 +83,13 @@ export const FilteredTickets = ({ tickets, listName, error, loading = false, ok 
    return (
       <TicketList listName={listName} tickets={filteredTickets}>
          {filteredTickets.length > 0 ? (
-            <div className={'flex flex-row items-center justify-start gap-4 rounded-lg border border-slate-200 px-4 py-2'}>
+            <div
+               className={
+                  'mb-2 flex max-w-[160px] flex-row flex-wrap items-center justify-center gap-4 rounded-lg border border-slate-200 px-4 py-2 smTablet:max-w-full'
+               }>
                <FilterButton
                   buttonName={'Tarih'}
-                  ButtonIcon={<CalendarIcon className={'w-[24px]'} />}
+                  icon={<CalendarIcon className={'w-[20px] smTablet:w-[24px]'} />}
                   onClick={() => {
                      handleSortChange('orderByDate', orderByDate, setOrderByDate)
                   }}
@@ -82,20 +97,33 @@ export const FilteredTickets = ({ tickets, listName, error, loading = false, ok 
                />
                <FilterButton
                   buttonName={'Fiyat'}
-                  ButtonIcon={<CurrencyDollarIcon className={'w-[24px]'} />}
+                  icon={<CurrencyDollarIcon className={'w-[20px] smTablet:w-[24px]'} />}
                   onClick={() => {
                      handleSortChange('orderByPrice', orderByPrice, setOrderByPrice)
                   }}
                   state={orderByPrice}
                />
-               <FilterButton
-                  buttonName={'Ülke'}
-                  ButtonIcon={<FlagIcon className={'w-[24px]'} />}
-                  onClick={() => {
-                     handleSortChange('orderByFlag', orderByFlag, setOrderByFlag)
-                  }}
-                  state={orderByFlag}
-               />
+
+               {listName === 'Bütün Biletler' && (
+                  <>
+                     <FilterButton
+                        buttonName={'Şehir'}
+                        icon={<MapPinIcon className={'w-[20px] smTablet:w-[24px]'} />}
+                        onClick={() => {
+                           handleSortChange('orderByCity', orderByCity, setOrderByCity)
+                        }}
+                        state={orderByCity}
+                     />
+                     <FilterButton
+                        buttonName={'Ülke'}
+                        icon={<FlagIcon className={'w-[20px] smTablet:w-[24px]'} />}
+                        onClick={() => {
+                           handleSortChange('orderByFlag', orderByFlag, setOrderByFlag)
+                        }}
+                        state={orderByFlag}
+                     />
+                  </>
+               )}
             </div>
          ) : (
             <div>

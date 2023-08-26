@@ -7,24 +7,24 @@ type TOutsideEffect = {
 }
 
 const useMenuOutsideCloseEffect = ({ buttonRef, menuRef, setIsOpen }: TOutsideEffect) => {
-   const handleOutsideClick = (event: MouseEvent) => {
-      if (
-         buttonRef.current &&
-         !buttonRef.current.contains(event.target as Node) &&
-         menuRef.current &&
-         !menuRef.current.contains(event.target as Node)
-      ) {
-         setIsOpen(false)
-      }
-   }
-
    useEffect(() => {
+      const handleOutsideClick = (event: MouseEvent) => {
+         if (
+            buttonRef.current &&
+            !buttonRef.current.contains(event.target as Node) &&
+            menuRef.current &&
+            !menuRef.current.contains(event.target as Node)
+         ) {
+            setIsOpen(false)
+         }
+      }
+
       window.addEventListener('mousedown', handleOutsideClick)
 
       return () => {
          window.removeEventListener('mousedown', handleOutsideClick)
       }
-   }, [])
+   }, [buttonRef, menuRef, setIsOpen])
 }
 
 export default useMenuOutsideCloseEffect

@@ -6,9 +6,11 @@ import { ReactNode } from 'react'
 
 import AirPlaneImageBlur from '../../../../public/airplane.png'
 
+export type TTicketListName = 'Bütün Biletler' | 'Gidiş Biletleri' | 'Dönüş Biletleri'
+
 type TProps = {
    tickets: TFlightTicket[]
-   listName: string
+   listName: TTicketListName
    children?: ReactNode
 }
 
@@ -16,7 +18,7 @@ export const TicketList = ({ tickets, listName, children }: TProps) => {
    return (
       <div className={'mx-auto flex h-full h-full min-w-[320px] max-w-7xl flex-col items-center justify-center px-4'}>
          <div className={'flex h-full w-full max-w-[800px] flex-col items-start justify-start gap-4 px-4 py-4'}>
-            <div className={'flex w-full flex-row items-center justify-start gap-4'}>
+            <div className={'flex flex-row items-center justify-start gap-4'}>
                <Image
                   src={AirPlaneImageBlur}
                   placeholder={'blur'}
@@ -30,6 +32,7 @@ export const TicketList = ({ tickets, listName, children }: TProps) => {
                </p>
             </div>
             {children}
+
             {tickets.map(ticket => (
                <TicketCard ticket={ticket} key={nanoid()} />
             ))}

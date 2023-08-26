@@ -18,7 +18,7 @@ const selectableTab = [
    },
 ]
 
-export const IsRoundTripToggleButton = () => {
+export const TicketFormTripTypeToggle = () => {
    const dispatch = useDispatch()
    const isRoundTrip = useSelector(getIsRoundTrip)
 

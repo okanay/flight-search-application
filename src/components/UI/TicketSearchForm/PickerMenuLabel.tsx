@@ -8,7 +8,7 @@ type TProps = {
    handleMenuToggle: void
 }
 
-export const PickerMenuContainer = ({ menuRef, children, buttonName, handleMenuToggle }: TProps) => {
+export const PickerMenuLabel = ({ menuRef, children, buttonName, handleMenuToggle }: TProps) => {
    return (
       <div className="fixed left-0 top-16 z-[30] flex h-full w-full flex-col items-center justify-start bg-slate-300/10 smTablet:top-0 smTablet:justify-center">
          <div

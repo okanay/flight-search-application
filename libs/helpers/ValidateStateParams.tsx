@@ -1,6 +1,6 @@
 import { TTicketSearchParams } from '../../redux/slices/TicketSearchParamsSlice'
 import { CustomError } from './CustomError'
-import { TValidationSearchParams } from '@/app/(main)/tickets/paramsresult/page'
+import { TValidationSearchParams } from '@/app/(main)/tickets/params-result/page'
 
 export const ValidateStateParams = (searchParams: TTicketSearchParams): number | undefined => {
    if (!searchParams.airportStart!) {

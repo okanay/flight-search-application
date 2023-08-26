@@ -2,7 +2,7 @@ import { TAirport, TCountry } from '../../../../../libs/constants/MockData'
 import { TDestinationBtnName } from '../../../../../libs/types/types'
 import { Dispatch, RefObject, SetStateAction, useEffect, useRef, useState } from 'react'
 import useMenuOutsideCloseEffect from '@/custom-hooks/useMenuOutsideCloseEffect'
-import { PickerMenuContainer } from '@/components/UI/TicketSearchForm/PickerMenuContainer'
+import { PickerMenuLabel } from '@/components/UI/TicketSearchForm/PickerMenuLabel'
 import { nanoid } from '@reduxjs/toolkit'
 
 type TProps = {
@@ -80,7 +80,7 @@ export const DestinationPicker = ({
             </>
          </button>
          {isOpen && (
-            <PickerMenuContainer menuRef={menuRef} handleMenuToggle={handleMenuToggle as any} buttonName={buttonName}>
+            <PickerMenuLabel menuRef={menuRef} handleMenuToggle={handleMenuToggle as any} buttonName={buttonName}>
                <div className="react-calendar flex h-full flex-col items-start justify-start shadow shadow-slate-200 smTablet:h-[300px]">
                   <input
                      ref={searchInputRef}
@@ -149,7 +149,7 @@ export const DestinationPicker = ({
                      </div>
                   </div>
                </div>
-            </PickerMenuContainer>
+            </PickerMenuLabel>
          )}
       </div>
    )

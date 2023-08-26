@@ -4,7 +4,7 @@ import { useDispatch } from 'react-redux'
 import { clearFilter } from '../../../../redux/slices/TicketSearchParamsSlice'
 import { clearError } from '../../../../redux/slices/TicketSearchFormErrorSlice'
 
-export const TicketFilterClear = () => {
+export const TicketFormClearHandle = () => {
    const dispatch = useDispatch()
 
    const handleOnClick = () => {

@@ -8,9 +8,8 @@ type TProps = {
 }
 
 export const TicketCard = ({ ticket }: TProps) => {
-   const { destinationStart, destinationEnd, isoFlightDate, ticketId, ticketPrice } = ticket
-
-   const { formattedDate, dayName, formattedTime } = FormattedDate(isoFlightDate)
+   const { destinationStart, destinationEnd, isoFlightDate, ticketPrice } = ticket
+   const { formattedDate, formattedTime } = FormattedDate(isoFlightDate)
 
    const formattedPrice = ticketPrice.toLocaleString('tr-TR', {
       style: 'currency',
@@ -26,8 +25,12 @@ export const TicketCard = ({ ticket }: TProps) => {
          transition-all duration-500 hover:scale-105 baseTablet:px-8 baseTablet:text-[14px]">
          <div className={'flex w-full items-start justify-between overflow-x-auto'}>
             <div className={'relative z-20 flex flex-col items-start justify-start gap-y-2'}>
-               <p className={'rounded-lg border border-slate-100 bg-slate-700 px-4 py-1 shadow shadow-slate-100'}>
-                  {destinationStart.name}
+               <p
+                  className={
+                     'flex flex-col justify-start gap-y-1 truncate rounded-lg border border-slate-100 bg-slate-700 px-4 py-1 text-start shadow shadow-slate-100'
+                  }>
+                  <span>{destinationStart.name}</span>
+                  <span>{destinationStart.countryName}</span>
                </p>
                <p className={'rounded-lg border border-slate-100 bg-slate-700 px-4 py-1 shadow shadow-slate-100'}>
                   {destinationStart.code}
@@ -43,8 +46,12 @@ export const TicketCard = ({ ticket }: TProps) => {
                <Image src={Word} alt={'word'} fill={true} className={'scale-95'} />
             </div>
             <div className={'relative z-20 flex flex-col items-end justify-end gap-y-2'}>
-               <p className={'rounded-lg border border-slate-100 bg-slate-700 px-4 py-1 shadow shadow-slate-200'}>
-                  {destinationEnd.name}
+               <p
+                  className={
+                     'flex flex-col justify-end gap-y-1 truncate rounded-lg border border-slate-100 bg-slate-700 px-4 py-1 text-end shadow shadow-slate-100'
+                  }>
+                  <span>{destinationEnd.name}</span>
+                  <span>{destinationEnd.countryName}</span>
                </p>
                <p className={'rounded-lg border border-slate-100 bg-slate-700 px-4 py-1 shadow shadow-slate-200'}>
                   {destinationEnd.code}

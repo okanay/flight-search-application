@@ -2,8 +2,8 @@ import { TDateBtnName } from '../../../../../libs/types/types'
 import Calendar from 'react-calendar'
 import { tr } from 'date-fns/locale'
 import { format } from 'date-fns'
-import { Next2Label, NextLabel, Prev2Label, PrevLabel } from '@/components/UI/TicketSearchForm/DatePickerLabels'
-import { PickerMenuContainer } from '@/components/UI/TicketSearchForm/PickerMenuContainer'
+import { Next2Label, NextLabel, Prev2Label, PrevLabel } from '@/components/UI/TicketSearchForm/Date/DatePickerIcons'
+import { PickerMenuLabel } from '@/components/UI/TicketSearchForm/PickerMenuLabel'
 import { useRef, useState } from 'react'
 import useMenuOutsideCloseEffect from '@/custom-hooks/useMenuOutsideCloseEffect'
 import { FormattedDate } from '../../../../../libs/helpers/FormattedDate'
@@ -56,7 +56,7 @@ export const DatePicker = ({ buttonName, selectedDate, handleOnChangeCallBack, m
             )}
          </button>
          {isOpen && (
-            <PickerMenuContainer menuRef={menuRef} handleMenuToggle={handleMenuToggle as any} buttonName={buttonName}>
+            <PickerMenuLabel menuRef={menuRef} handleMenuToggle={handleMenuToggle as any} buttonName={buttonName}>
                <Calendar
                   view={'month'}
                   locale={'tr'}
@@ -74,7 +74,7 @@ export const DatePicker = ({ buttonName, selectedDate, handleOnChangeCallBack, m
                   prevLabel={<PrevLabel />}
                   prev2Label={<Prev2Label />}
                />
-            </PickerMenuContainer>
+            </PickerMenuLabel>
          )}
       </div>
    )

@@ -16,7 +16,7 @@ const selectableTab = [
    },
 ]
 
-export const SearchTypeToggleButton = () => {
+export const TicketFormSearchTypeToggle = () => {
    const dispatch = useDispatch()
    const searchType = useSelector(getSearchType)
 
@@ -27,7 +27,9 @@ export const SearchTypeToggleButton = () => {
             dispatch(toggleSearchType())
          }}
          className={'group flex flex-col'}>
-         <div className="group absolute right-0 top-0 flex flex-row justify-between gap-2 border border-slate-200 bg-gradient-to-tr from-slate-200 to-slate-100 px-1 py-2 font-openSans shadow shadow-slate-200">
+         <div
+            className="group absolute right-0 top-0 flex flex-row justify-between gap-2
+          border border-slate-200 bg-gradient-to-tr from-slate-200 to-slate-100 px-1 py-2 font-openSans shadow shadow-slate-200">
             {selectableTab.map(item => (
                <div
                   key={nanoid()}

@@ -38,22 +38,10 @@ export default function SearchResultPage() {
       </>
    ) : (
       <>
-         <FilteredTickets
-            tickets={searchResult?.startDestinationTickets?.tickets || []}
-            listName={'Gidiş Biletleri'}
-            loading={isLoading}
-            error={error}
-            ok={searchResult?.startDestinationTickets?.ok || true}
-         />
+         <FilteredTickets tickets={searchResult?.startDestinationTickets?.tickets || []} listName={'Gidiş Biletleri'} />
 
          {formParams.isRoundTrip && (
-            <FilteredTickets
-               tickets={searchResult?.endDestinationTickets?.tickets || []}
-               listName={'Dönüş Biletleri'}
-               loading={isLoading}
-               error={error}
-               ok={searchResult?.endDestinationTickets?.ok || true}
-            />
+            <FilteredTickets tickets={searchResult?.endDestinationTickets?.tickets || []} listName={'Dönüş Biletleri'} />
          )}
       </>
    )
