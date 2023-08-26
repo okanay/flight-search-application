@@ -2,13 +2,15 @@ import { createSlice } from '@reduxjs/toolkit'
 import { TAirport } from '../../libs/constants/MockData'
 import { formatISO } from 'date-fns'
 
+export type TSearchType = 'reduxState' | 'searchParams'
+
 export type TTicketSearchParams = {
    isRoundTrip: boolean
    airportStart: TAirport | undefined
    airportEnd: TAirport | undefined
    isoDateStart: string | undefined
    isoDateEnd: string | undefined
-   isSearchFilterTypeStateOrParams: boolean
+   searchType: TSearchType
 }
 
 const initialState: TTicketSearchParams = {
@@ -17,7 +19,7 @@ const initialState: TTicketSearchParams = {
    airportEnd: undefined,
    isoDateStart: undefined,
    isoDateEnd: undefined,
-   isSearchFilterTypeStateOrParams: false,
+   searchType: 'searchParams',
 }
 
 export const TicketSearchParamsSlice = createSlice({
@@ -27,8 +29,8 @@ export const TicketSearchParamsSlice = createSlice({
       clearFilter: state => {
          return initialState
       },
-      toggleIsSearchFilterTypeStateOrParams: state => {
-         state.isSearchFilterTypeStateOrParams = !state.isSearchFilterTypeStateOrParams
+      toggleSearchType: state => {
+         state.searchType = state.searchType === 'reduxState' ? 'searchParams' : 'reduxState'
       },
       toggleIsRoundTrip: state => {
          state.isRoundTrip = !state.isRoundTrip
@@ -59,15 +61,8 @@ export const getAirportStart = (state: any) => state.ticketSearchParamsSlice.air
 export const getAirportEnd = (state: any) => state.ticketSearchParamsSlice.airportEnd
 export const getIsoDateStart = (state: any) => state.ticketSearchParamsSlice.isoDateStart
 export const getIsoDateEnd = (state: any) => state.ticketSearchParamsSlice.isoDateEnd
-export const getIsSearchFilterTypeStateOrParams = (state: any) => state.ticketSearchParamsSlice.isSearchFilterTypeStateOrParams
+export const getSearchType = (state: any) => state.ticketSearchParamsSlice.searchType
 
-export const {
-   clearFilter,
-   toggleIsRoundTrip,
-   setAirportStart,
-   setAirportEnd,
-   setDateStart,
-   setDateEnd,
-   toggleIsSearchFilterTypeStateOrParams,
-} = TicketSearchParamsSlice.actions
+export const { clearFilter, toggleIsRoundTrip, setAirportStart, setAirportEnd, setDateStart, setDateEnd, toggleSearchType } =
+   TicketSearchParamsSlice.actions
 export default TicketSearchParamsSlice.reducer

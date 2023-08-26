@@ -5,40 +5,53 @@ import { useDispatch, useSelector } from 'react-redux'
 import { useRouter } from 'next/navigation'
 import { getTicketSearchParams, TTicketSearchParams } from '../../../../redux/slices/TicketSearchParamsSlice'
 import { ValidateStateParams } from '../../../../libs/helpers/ValidateStateParams'
-import { clearError, setError } from '../../../../redux/slices/TicketSearchFormErrorSlice'
+import { setError } from '../../../../redux/slices/TicketSearchFormErrorSlice'
 //
 //
 //
 export const TicketSearchButton = () => {
-   const router = useRouter()
+   //
    const dispatch = useDispatch()
+   const router = useRouter()
+   //
    const formParams: TTicketSearchParams = useSelector(getTicketSearchParams)
-
+   const searchType = formParams.searchType
+   //
    const handleOnClick = () => {
+      //
       const isValid = ValidateStateParams(formParams)
+      //
       if (isValid === undefined) {
-         dispatch(clearError())
-         if (formParams.isSearchFilterTypeStateOrParams) {
-            const srcParams = {
-               startId: formParams.airportStart?.id || 'empty',
-               startDate: formParams.isoDateStart || 'empty',
-               endId: formParams.airportEnd?.id || 'empty',
-               endDate: formParams.isoDateEnd || 'empty',
-               trip: formParams.isRoundTrip ? 'true' : 'false',
-            }
-            const url = `/tickets/paramsresult?startId=${encodeURIComponent(srcParams.startId)}&startDate=${encodeURIComponent(
-               srcParams.startDate,
-            )}&endId=${encodeURIComponent(srcParams.endId)}&endDate=${encodeURIComponent(
-               srcParams.endDate,
-            )}&trip=${encodeURIComponent(srcParams.trip)}`
-
-            router.push(url)
-         } else {
-            router.push('/tickets/stateresult')
-         }
-      } else {
-         dispatch(setError(isValid))
+         //
+         //
+         if (searchType === 'searchParams') handleSearchParams()
+         if (searchType === 'reduxState') handleStateParams()
+         //
       }
+      //
+      else dispatch(setError(isValid))
+   }
+
+   const handleSearchParams = () => {
+      const srcParams = {
+         startId: formParams.airportStart?.id || 'empty',
+         startDate: formParams.isoDateStart || 'empty',
+         endId: formParams.airportEnd?.id || 'empty',
+         endDate: formParams.isoDateEnd || 'empty',
+         trip: formParams.isRoundTrip ? 'true' : 'false',
+      }
+
+      const url = `/tickets/paramsresult?startId=${encodeURIComponent(srcParams.startId)}&startDate=${encodeURIComponent(
+         srcParams.startDate,
+      )}&endId=${encodeURIComponent(srcParams.endId)}&endDate=${encodeURIComponent(srcParams.endDate)}&trip=${encodeURIComponent(
+         srcParams.trip,
+      )}`
+
+      router.push(url)
+   }
+
+   const handleStateParams = () => {
+      router.push('/tickets/stateresult')
    }
 
    return (

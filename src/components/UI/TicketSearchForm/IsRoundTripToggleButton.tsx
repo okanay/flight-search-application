@@ -2,21 +2,18 @@
 
 import { motion } from 'framer-motion'
 import { useDispatch, useSelector } from 'react-redux'
-import {
-   getIsRoundTrip,
-   getIsSearchFilterTypeStateOrParams,
-   toggleIsRoundTrip,
-} from '../../../../redux/slices/TicketSearchParamsSlice'
+import { getIsRoundTrip, getSearchType, toggleIsRoundTrip } from '../../../../redux/slices/TicketSearchParamsSlice'
+import { TDestinationBtnName } from '../../../../libs/types/types'
 
 const selectableTab = [
    {
       id: 0,
-      name: 'Gidiş Dönüş',
+      name: 'Gidiş Dönüş' as TDestinationBtnName,
       active: true,
    },
    {
       id: 1,
-      name: 'Tek Yön',
+      name: 'Tek Yön' as TDestinationBtnName,
       active: false,
    },
 ]
@@ -36,7 +33,7 @@ export const IsRoundTripToggleButton = () => {
                   }`}>
                   {isRoundTrip === item.active && (
                      <motion.div
-                        layoutId={'active-pill'}
+                        layoutId={'active-pill-tripType'}
                         style={{ borderRadius: 8 }}
                         className={'absolute inset-0 bg-gradient-to-tr from-primary-300 to-primary-400'}
                      />
