@@ -1,9 +1,7 @@
 'use client'
 
-import { useEffect } from 'react'
-import { usePathname, useRouter } from 'next/navigation'
-import { errorMessage } from '../../../../../libs/helpers/ValidateStateParams'
 import Link from 'next/link'
+import { errorMessage } from '../../../../../libs/helpers/ValidateStateParams'
 
 type TProps = {
    error: Error & { digest?: string }

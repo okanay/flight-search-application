@@ -5,7 +5,7 @@ import { useSearchParams } from 'next/navigation'
 
 export default function ParamsLoading() {
    const searchParams = useSearchParams()
-   const isTrip = Boolean(searchParams.get('trip'))
+   const isTrip = searchParams.get('trip') === 'true'
 
    return (
       <>
