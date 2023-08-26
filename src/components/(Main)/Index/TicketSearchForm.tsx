@@ -7,6 +7,7 @@ import { TicketFilterClear } from '@/components/UI/TicketSearchForm/TicketFilter
 import { TicketSearchButton } from '@/components/UI/TicketSearchForm/TicketSearchButton'
 import Link from 'next/link'
 import { TicketErrorHandle } from '@/components/UI/TicketSearchForm/TicketErrorHandle'
+import { SearchParamsOrStateToggle } from '@/components/UI/TicketSearchForm/SearchParamsOrStateToggle'
 
 export const TicketSearchForm = () => {
    return (
@@ -35,6 +36,7 @@ export const TicketSearchForm = () => {
          </div>
 
          <TicketErrorHandle />
+         <SearchParamsOrStateToggle />
       </form>
    )
 }

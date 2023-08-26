@@ -2,7 +2,11 @@
 
 import { motion } from 'framer-motion'
 import { useDispatch, useSelector } from 'react-redux'
-import { getIsRoundTrip, toggleIsRoundTrip } from '../../../../redux/slices/TicketSearchParamsSlice'
+import {
+   getIsRoundTrip,
+   getIsSearchFilterTypeStateOrParams,
+   toggleIsRoundTrip,
+} from '../../../../redux/slices/TicketSearchParamsSlice'
 
 const selectableTab = [
    {

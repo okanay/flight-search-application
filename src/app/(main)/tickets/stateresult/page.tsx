@@ -11,21 +11,21 @@ import { TicketListLoading } from '@/components/(Main)/Tickets/TicketListLoading
 import { ValidateSearchParams } from '../../../../../libs/helpers/ValidateSearchParams'
 
 import { useSelector } from 'react-redux'
+import { usePathname, useRouter, useSearchParams } from 'next/navigation'
 
 export default function SearchResultPage() {
-   const searchParams: TTicketSearchParams = useSelector(getTicketSearchParams)
-
    const [error, setError] = useState<TFetchError>({
       isError: false,
       status: 200,
    })
+   const formParams: TTicketSearchParams = useSelector(getTicketSearchParams)
 
    const { isLoading, data: searchResult } = useQuery<TTicketFetchResponse>({
       cacheTime: 0,
       queryKey: ['search result'],
       retry: 0,
       queryFn: async () => {
-         return await TicketSearchFetchPost(searchParams, setError)
+         return await TicketSearchFetchPost(formParams, setError)
       },
    })
 
@@ -34,7 +34,7 @@ export default function SearchResultPage() {
    ) : isLoading ? (
       <>
          <TicketListLoading maxSkeletonCount={2} />
-         {searchParams.isRoundTrip && <TicketListLoading maxSkeletonCount={2} />}
+         {formParams.isRoundTrip && <TicketListLoading maxSkeletonCount={2} />}
       </>
    ) : (
       <>
@@ -46,7 +46,7 @@ export default function SearchResultPage() {
             ok={searchResult?.startDestinationTickets?.ok || true}
          />
 
-         {searchParams.isRoundTrip && (
+         {formParams.isRoundTrip && (
             <FilteredTickets
                tickets={searchResult?.endDestinationTickets?.tickets || []}
                listName={'Dönüş Biletleri'}
