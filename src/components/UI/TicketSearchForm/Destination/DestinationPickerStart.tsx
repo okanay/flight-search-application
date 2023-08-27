@@ -19,8 +19,8 @@ export const DestinationPickerStart = () => {
 
    const dispatch = useDispatch()
 
-   const destinationEnd: TAirport = useSelector(getAirportEnd)
-   const destinationStart: TAirport = useSelector(getAirportStart)
+   const destinationEnd: TAirport | undefined = useSelector(getAirportEnd)
+   const destinationStart: TAirport | undefined = useSelector(getAirportStart)
 
    const withoutEndDestination: TAirport[] = AirportsMockData.filter(a => {
       if (destinationEnd !== undefined) {

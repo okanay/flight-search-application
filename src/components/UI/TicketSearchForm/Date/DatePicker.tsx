@@ -11,7 +11,7 @@ import { caseEndDate, caseStartDate } from '../../../../../libs/helpers/TicketFi
 
 type TProps = {
    buttonName: TDateBtnName
-   selectedDate: Date | undefined
+   selectedDate: string | undefined
    disabledBtn?: boolean
    handleOnChangeCallBack: (value: Date) => void
    minDate?: Date
