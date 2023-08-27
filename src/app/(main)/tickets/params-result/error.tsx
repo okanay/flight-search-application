@@ -9,8 +9,6 @@ type TProps = {
 }
 
 export default function SearchParamsError({ error, reset }: TProps) {
-   console.log(error.message)
-
    return (
       <div className={'mx-auto flex h-full h-full min-w-[320px] max-w-7xl flex-col items-center justify-center px-4'}>
          <div

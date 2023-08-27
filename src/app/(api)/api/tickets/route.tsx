@@ -29,7 +29,7 @@ export async function POST(req: NextRequest) {
       startDestinationTickets: { tickets: [...startDestinationTickets], ok: startDestinationTickets.length > 0 },
       endDestinationTickets: {
          tickets: [...endDestinationTickets],
-         ok: !searchParams.isRoundTrip && endDestinationTickets.length > 0,
+         ok: searchParams.isRoundTrip && endDestinationTickets.length > 0,
       },
    }
 
