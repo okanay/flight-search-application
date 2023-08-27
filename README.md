@@ -28,3 +28,5 @@ export const caseEndDate = new Date('2023-09-15T00:00:00Z')
 ### **Error**
 ![Error](./screenshots/error.png)
 
+### **ALL TICKETS**
+![Error](./screenshots/all.png)

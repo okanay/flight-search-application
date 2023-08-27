@@ -1,6 +1,7 @@
 import { createSlice } from '@reduxjs/toolkit'
 import { TAirport } from '../../libs/constants/MockData'
 import { formatISO } from 'date-fns'
+import { TReduxState } from '../../libs/types/types'
 
 export type TSearchType = 'reduxState' | 'searchParams'
 
@@ -55,13 +56,13 @@ export const TicketSearchParamsSlice = createSlice({
    },
 })
 
-export const getTicketSearchParams = (state: any) => state.ticketSearchParamsSlice
-export const getIsRoundTrip = (state: any) => state.ticketSearchParamsSlice.isRoundTrip
-export const getAirportStart = (state: any) => state.ticketSearchParamsSlice.airportStart
-export const getAirportEnd = (state: any) => state.ticketSearchParamsSlice.airportEnd
-export const getIsoDateStart = (state: any) => state.ticketSearchParamsSlice.isoDateStart
-export const getIsoDateEnd = (state: any) => state.ticketSearchParamsSlice.isoDateEnd
-export const getSearchType = (state: any) => state.ticketSearchParamsSlice.searchType
+export const getTicketSearchParams = (state: TReduxState) => state.ticketSearchParamsSlice
+export const getIsRoundTrip = (state: TReduxState) => state.ticketSearchParamsSlice.isRoundTrip
+export const getAirportStart = (state: TReduxState) => state.ticketSearchParamsSlice.airportStart
+export const getAirportEnd = (state: TReduxState) => state.ticketSearchParamsSlice.airportEnd
+export const getIsoDateStart = (state: TReduxState) => state.ticketSearchParamsSlice.isoDateStart
+export const getIsoDateEnd = (state: TReduxState) => state.ticketSearchParamsSlice.isoDateEnd
+export const getSearchType = (state: TReduxState) => state.ticketSearchParamsSlice.searchType
 
 export const { clearFilter, toggleIsRoundTrip, setAirportStart, setAirportEnd, setDateStart, setDateEnd, toggleSearchType } =
    TicketSearchParamsSlice.actions

@@ -1,6 +1,7 @@
 import { createSlice } from '@reduxjs/toolkit'
 import { ErrorMessageHandle } from '../../libs/helpers/ValidateStateParams'
 import exp from 'constants'
+import { TReduxState } from '../../libs/types/types'
 
 export type TTicketSearchFormError = {
    isError: boolean
@@ -29,10 +30,10 @@ export const TicketSearchFormErrorSlice = createSlice({
    },
 })
 
-export const getTicketError = (state: any) => state.ticketSearchFormErrorSlice
-export const getIsError = (state: any) => state.ticketSearchFormErrorSlice.isError
-export const getErrorStatus = (state: any) => state.ticketSearchFormErrorSlice.status
-export const getErrorMessage = (state: any) => state.ticketSearchFormErrorSlice.message
+export const getTicketError = (state: TReduxState) => state.ticketSearchFormErrorSlice
+export const getIsError = (state: TReduxState) => state.ticketSearchFormErrorSlice.isError
+export const getErrorStatus = (state: TReduxState) => state.ticketSearchFormErrorSlice.status
+export const getErrorMessage = (state: TReduxState) => state.ticketSearchFormErrorSlice.message
 
 export const { clearError, setError } = TicketSearchFormErrorSlice.actions
 export default TicketSearchFormErrorSlice.reducer
