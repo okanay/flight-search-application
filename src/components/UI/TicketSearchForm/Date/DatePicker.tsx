@@ -1,13 +1,15 @@
 import { TDateBtnName } from '../../../../../libs/types/types'
-import Calendar from 'react-calendar'
-import { tr } from 'date-fns/locale'
-import { format } from 'date-fns'
-import { Next2Label, NextLabel, Prev2Label, PrevLabel } from '@/components/UI/TicketSearchForm/Date/DatePickerIcons'
-import { PickerMenuLabel } from '@/components/UI/TicketSearchForm/PickerMenuLabel'
+
 import { useRef, useState } from 'react'
+
 import useMenuOutsideCloseEffect from '@/custom-hooks/useMenuOutsideCloseEffect'
+import { Next2Label, NextLabel, Prev2Label, PrevLabel } from '@/components/UI/TicketSearchForm/Date/DatePickerIcons'
 import { FormattedDate } from '../../../../../libs/helpers/FormattedDate'
+import { PickerMenuLabel } from '@/components/UI/TicketSearchForm/PickerMenuLabel'
+
 import { caseEndDate, caseStartDate } from '../../../../../libs/helpers/TicketFinder'
+import { tr } from 'date-fns/locale'
+import Calendar from 'react-calendar'
 
 type TProps = {
    buttonName: TDateBtnName
@@ -63,7 +65,7 @@ export const DatePicker = ({ buttonName, selectedDate, handleOnChangeCallBack, m
                   }}
                   showNeighboringMonth={true}
                   showNavigation={true}
-                  defaultValue={selectedDate}
+                  defaultValue={new Date('2023-08-26')}
                   minDate={minDate !== undefined ? minDate : caseStartDate}
                   maxDate={caseEndDate}
                   nextLabel={<NextLabel />}

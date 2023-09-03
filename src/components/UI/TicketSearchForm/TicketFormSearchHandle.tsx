@@ -11,7 +11,7 @@ import { setError } from '../../../../redux/slices/TicketSearchFormErrorSlice'
 export const TicketFormSearchHandle = () => {
    //
    const dispatch = useDispatch()
-   const router = useRouter()
+   const { push, refresh } = useRouter()
    //
    const formParams: TTicketSearchParams = useSelector(getTicketSearchParams)
    const searchType = formParams.searchType
@@ -45,11 +45,13 @@ export const TicketFormSearchHandle = () => {
          urlParams.trip,
       )}`
 
-      router.push(url)
+      push(url)
+      refresh()
    }
 
    const handleStateParams = () => {
-      router.push('/tickets/state-result')
+      push('/tickets/state-result')
+      refresh()
    }
 
    return (

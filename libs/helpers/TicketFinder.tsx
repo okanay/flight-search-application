@@ -1,17 +1,17 @@
 import { TicketMockData } from '../constants/MockData'
 
 export const TicketFinder = (destinationStartId: number, destinationEndId: number, date: string | undefined) => {
-   const destinationReturnDate = date !== undefined ? new Date(date) : undefined
+   const destinationDate = date !== undefined ? new Date(date) : undefined
 
-   if (destinationReturnDate !== undefined) {
-      const destinationTrLocaleDate = destinationReturnDate.toLocaleDateString('tr-TR', { timeZone: 'Europe/Istanbul' })
+   if (destinationDate !== undefined) {
+      const destinationDateTRLocale = destinationDate.toLocaleDateString('tr-TR', { timeZone: 'Europe/Istanbul' })
 
       return TicketMockData.filter(ticket => {
          const ticketDate = new Date(ticket.isoFlightDate)
-         const ticketDateTrLocale = ticketDate.toLocaleDateString('tr-TR', { timeZone: 'Europe/Istanbul' })
+         const ticketDateTRLocale = ticketDate.toLocaleDateString('tr-TR', { timeZone: 'Europe/Istanbul' })
 
          if (
-            ticketDateTrLocale === destinationTrLocaleDate &&
+            ticketDateTRLocale === destinationDateTRLocale &&
             ticket.destinationStart.id === destinationStartId &&
             ticket.destinationEnd.id === destinationEndId
          ) {
