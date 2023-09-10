@@ -31,7 +31,10 @@ export const TicketFormSearchHandle = () => {
          //
       }
       //
-      else dispatch(setError(isValid))
+      else {
+         setLoading(false)
+         dispatch(setError(isValid))
+      }
    }
 
    const handleSearchParams = () => {
