@@ -19,20 +19,20 @@ export const TicketFormSearchHandle = () => {
    const searchType = formParams.searchType
    //
    const handleOnClick = () => {
-      setLoading(true)
       //
       const isValid = ValidateStateParams(formParams)
       //
       if (isValid === undefined) {
+         setLoading(true)
          //
          //
          if (searchType === 'searchParams') handleSearchParams()
          if (searchType === 'reduxState') handleStateParams()
          //
+         setLoading(false)
       }
       //
       else {
-         setLoading(false)
          dispatch(setError(isValid))
       }
    }
