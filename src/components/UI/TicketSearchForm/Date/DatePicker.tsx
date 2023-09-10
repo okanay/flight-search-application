@@ -41,7 +41,8 @@ export const DatePicker = ({ buttonName, selectedDate, handleOnChangeCallBack, m
              ${isOpen ? 'border-b-primary-400' : 'border-b-slate-400'}`}
             type={'button'}
             ref={buttonRef}
-            onClick={handleMenuToggle as any}>
+            onClick={handleMenuToggle as any}
+         >
             {selectedDate === undefined ? (
                <span className={'flex flex-col items-start justify-center text-slate-600 group-disabled:text-slate-400'}>
                   <span className={'text-[16px] font-semibold'}>{buttonName}</span>

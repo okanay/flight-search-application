@@ -32,7 +32,8 @@ export const TicketSearchForm = () => {
                href={'/tickets/all'}
                className="absolute bottom-0 flex h-[32px] translate-y-1/2 flex-col items-center justify-center rounded-lg
          border border-primary-950/10 bg-gradient-to-tr from-primary-50 to-primary-100/40
-         px-4 text-center text-[12px] font-semibold tracking-wide text-primary-500 transition-all duration-500 hover:text-primary-400 hover:opacity-90">
+         px-4 text-center text-[12px] font-semibold tracking-wide text-primary-500 transition-all duration-500 hover:text-primary-400 hover:opacity-90"
+            >
                BÜTÜN BİLETLER
             </Link>
          </div>

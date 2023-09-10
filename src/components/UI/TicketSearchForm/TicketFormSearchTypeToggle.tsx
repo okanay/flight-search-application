@@ -26,16 +26,19 @@ export const TicketFormSearchTypeToggle = () => {
          onClick={() => {
             dispatch(toggleSearchType())
          }}
-         className={'group flex flex-col'}>
+         className={'group flex flex-col'}
+      >
          <div
             className="group absolute right-2 top-2 flex flex-row justify-between gap-2 rounded-lg border
-          border-slate-200 bg-gradient-to-tr from-slate-200 to-slate-100 px-1 py-2 font-openSans shadow shadow-slate-200 baseTablet:top-4">
+          border-slate-200 bg-gradient-to-tr from-slate-200 to-slate-100 px-1 py-2 font-openSans shadow shadow-slate-200 baseTablet:top-4"
+         >
             {selectableTab.map(item => (
                <div
                   key={nanoid()}
                   className={`relative rounded-full px-1 py-1 transition-opacity duration-300 ${
                      searchType === item.name ? 'group-hover:opacity-80' : ''
-                  }`}>
+                  }`}
+               >
                   {searchType === item.name && (
                      <motion.div
                         layoutId={'active-pill-searchType'}
@@ -46,7 +49,8 @@ export const TicketFormSearchTypeToggle = () => {
                   <p
                      className={`relative z-20 text-[8px] font-semibold tracking-wide transition-colors duration-700 ${
                         searchType === item.name ? 'text-white' : 'text-slate-600'
-                     }`}>
+                     }`}
+                  >
                      {item.text}
                   </p>
                </div>

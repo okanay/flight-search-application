@@ -86,7 +86,8 @@ export const FilteredTickets = ({ tickets, listName }: TProps) => {
             <div
                className={
                   'mb-2 grid w-full grid-cols-[repeat(auto-fill,minmax(80px,12fr))] items-center justify-start gap-4 overflow-hidden rounded-lg border border-slate-200 px-4 py-2'
-               }>
+               }
+            >
                <FilterButton
                   buttonName={'Tarih'}
                   icon={<CalendarIcon className={'w-[20px] smTablet:w-[24px]'} />}

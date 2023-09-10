@@ -5,10 +5,12 @@ import { useRouter } from 'next/navigation'
 import { getTicketSearchParams, TTicketSearchParams } from '../../../../redux/slices/TicketSearchParamsSlice'
 import { ValidateStateParams } from '../../../../libs/helpers/ValidateStateParams'
 import { setError } from '../../../../redux/slices/TicketSearchFormErrorSlice'
+import { useState } from 'react'
 //
 //
 //
 export const TicketFormSearchHandle = () => {
+   const [loading, setLoading] = useState(false)
    //
    const dispatch = useDispatch()
    const { push, refresh } = useRouter()
@@ -17,6 +19,7 @@ export const TicketFormSearchHandle = () => {
    const searchType = formParams.searchType
    //
    const handleOnClick = () => {
+      setLoading(true)
       //
       const isValid = ValidateStateParams(formParams)
       //
@@ -58,10 +61,15 @@ export const TicketFormSearchHandle = () => {
       <button
          onClick={handleOnClick}
          type={'button'}
-         className="flex h-[52px] flex-col items-center justify-center
+         disabled={loading}
+         className="flex h-[52px] w-32 flex-col items-center justify-center
          rounded-lg border border-primary-950/10 bg-gradient-to-tr from-primary-50 to-primary-100/40
-         px-4 text-center text-[16px] font-semibold tracking-wide text-primary-500 transition-all duration-500 hover:text-primary-400 hover:opacity-90">
-         <span>BİLET ARA</span>
+         px-4 text-center text-[16px] font-semibold tracking-wide text-primary-500 transition-all duration-500 hover:text-primary-400 hover:opacity-90 disabled:text-gray-600 disabled:opacity-60">
+         {!loading ? (
+            <span>BİLET ARA</span>
+         ) : (
+            <span className={'h-8 w-8 animate-spin rounded-full bg-gradient-to-tr from-primary-500 to-primary-800'} />
+         )}
       </button>
    )
 }

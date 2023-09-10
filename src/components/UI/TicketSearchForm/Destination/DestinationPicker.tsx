@@ -62,7 +62,8 @@ export const DestinationPicker = ({
             className={`h-[64px] w-[200px] border-b-[2px] text-slate-600 transition-colors duration-300 hover:border-b-primary-400 focus:border-b-primary-400
              ${isOpen ? 'border-b-primary-400' : 'border-b-slate-400'}`}
             ref={buttonRef}
-            onClick={handleMenuToggle as any}>
+            onClick={handleMenuToggle as any}
+         >
             <>
                {selectedDestination === undefined ? (
                   <span className={'flex flex-col items-start justify-center text-slate-600'}>
@@ -96,7 +97,8 @@ export const DestinationPicker = ({
                         <h2
                            className={
                               'w-full bg-gradient-to-l from-primary-300 to-primary-400 px-2 py-4 text-start text-[16px] font-semibold text-white'
-                           }>
+                           }
+                        >
                            Havalimanlari
                         </h2>
                         <div className={'flex h-full w-full flex-col gap-2 overflow-y-auto pr-4'}>
@@ -111,7 +113,8 @@ export const DestinationPicker = ({
                                     selectedDestination?.name === a.name
                                        ? 'bg-gradient-to-r from-primary-400 to-primary-300 text-slate-50 hover:opacity-80'
                                        : 'text-slate-600 hover:bg-slate-200 hover:opacity-90'
-                                 }`}>
+                                 }`}
+                              >
                                  <span className={'text-[14px] font-bold'}>{a.name}</span>
                                  <span className={'text-[10px]'}>
                                     {a.countryName}/{a.continent}
@@ -125,7 +128,8 @@ export const DestinationPicker = ({
                         <h2
                            className={
                               'w-full bg-gradient-to-l from-primary-400 to-primary-300 px-2 py-4 text-start text-[16px] font-semibold text-white'
-                           }>
+                           }
+                        >
                            Ülkeler
                         </h2>
                         <div className={'flex h-full w-full flex-col gap-2 overflow-y-auto pr-4'}>
@@ -140,7 +144,8 @@ export const DestinationPicker = ({
                                     selectedCountry?.name === c.name
                                        ? 'bg-gradient-to-l from-primary-400 to-primary-300 text-slate-50 hover:opacity-80'
                                        : 'text-slate-600 hover:bg-slate-200 hover:opacity-90'
-                                 }`}>
+                                 }`}
+                              >
                                  <span className={'text-[14px] font-bold'}>{c.name}</span>
                                  <span className={'text-[10px]'}>{c.continent}</span>
                               </button>

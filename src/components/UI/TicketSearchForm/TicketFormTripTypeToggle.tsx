@@ -30,7 +30,8 @@ export const TicketFormTripTypeToggle = () => {
                   key={item.id}
                   className={`relative flex-shrink-0 rounded-full px-4 py-2 text-[14px] transition-opacity duration-300 ${
                      isRoundTrip === item.active ? 'group-hover:opacity-80' : ''
-                  }`}>
+                  }`}
+               >
                   {isRoundTrip === item.active && (
                      <motion.div
                         layoutId={'active-pill-tripType'}
@@ -41,7 +42,8 @@ export const TicketFormTripTypeToggle = () => {
                   <p
                      className={`relative z-20 font-semibold tracking-wide transition-colors duration-700 ${
                         isRoundTrip === item.active ? 'text-white' : 'text-slate-600'
-                     }`}>
+                     }`}
+                  >
                      {item.name}
                   </p>
                </div>
